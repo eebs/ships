@@ -1,0 +1,26 @@
+<header class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <%= link_to "Koprulu Sector", '/', id: "logo" %>
+      <nav>
+        <ul class="nav pull-right">
+          <li class="<%= is_active?("home") %>"><%= link_to "Home",    root_path %></li>
+          <li class="<%= is_active?("runs") %>"><%= link_to "Runs",   runs_path %></li>
+          <li class="<%= is_active?("ships") %>"><%= link_to "Ships",   ships_path %></li>
+          <li class="<%= is_active?("statuses") %>"><%= link_to "Statuses", statuses_path %></li>
+          <% if false && user_signed_in? %>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Account<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li class="nav-header">Account</li>
+                <li><a href="<%= edit_user_registration_path %>"><i class=" icon-cog"></i> Settings</a>
+                <li class="divider"></li>
+                <li><%= link_to "Sign Out",  destroy_user_session_path, method: :delete %></li>
+              </ul>
+            </li>
+          <% end %>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>

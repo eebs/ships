@@ -36,3 +36,6 @@ gem 'unicorn'
 
 # To use debugger
 # gem 'debugger'
+
+# Twitter bootstrap
+gem 'bootstrap-sass', '~> 2.2.1.1'

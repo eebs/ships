@@ -1,35 +1,38 @@
 <h1>Listing runs</h1>
 
-<table>
-  <tr>
-    <th>Next due</th>
-    <th>Ship</th>
-    <th>Ship number</th>
-    <th>Status</th>
-    <th>Sell price</th>
-    <th>Start date</th>
-    <th>Sell date</th>
-    <th>Notes</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @runs.each do |run| %>
-  <tr>
-    <td><%= run.next_due.to_formatted_s(:short) %></td>
-    <td><%= run.ship.name %></td>
-    <td><%= run.ship_number %></td>
-    <td><%= run.status.name %></td>
-    <td><%= run.sell_price %></td>
-    <td><%= run.start_date.to_formatted_s(:short) %></td>
-    <td><%= run.sell_date.to_formatted_s(:short) %></td>
-    <td><%= run.notes %></td>
-    <td><%= link_to 'Show', run %></td>
-    <td><%= link_to 'Edit', edit_run_path(run) %></td>
-    <td><%= link_to 'Destroy', run, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+<table class="table">
+    <thead>
+        <tr>
+        <th>Next Due</th>
+        <th>Ship</th>
+        <th>#</th>
+        <th>Status</th>
+        <th>Sell Price</th>
+        <th>Start Date</th>
+        <th>Sell Date</th>
+        <th>Notes</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    <% @runs.each do |run| %>
+      <tr>
+        <td><%= run.next_due.to_formatted_s(:short) %></td>
+        <td><%= run.ship.name %></td>
+        <td><%= run.ship_number %></td>
+        <td><%= run.status.name %></td>
+        <td><%= run.sell_price %></td>
+        <td><%= run.start_date.to_formatted_s(:short) %></td>
+        <td><%= run.sell_date.to_formatted_s(:short) %></td>
+        <td><%= run.notes %></td>
+        <td><%= link_to 'Show', run %></td>
+        <td><%= link_to 'Edit', edit_run_path(run) %></td>
+        <td><%= link_to 'Destroy', run, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+    </tbody>
 </table>
 
 <br />
