@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Next due:</b>
+  <%= @run.next_due %>
+</p>
+
+<p>
+  <b>Ship:</b>
+  <%= @run.ship.name %>
+</p>
+
+<p>
+  <b>Ship number:</b>
+  <%= @run.ship_number %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @run.status.name %>
+</p>
+
+<p>
+  <b>Sell price:</b>
+  <%= @run.sell_price %>
+</p>
+
+<p>
+  <b>Start date:</b>
+  <%= @run.start_date %>
+</p>
+
+<p>
+  <b>Sell date:</b>
+  <%= @run.sell_date %>
+</p>
+
+<p>
+  <b>Notes:</b>
+  <%= @run.notes %>
+</p>
+
+
+<%= link_to 'Edit', edit_run_path(@run) %> |
+<%= link_to 'Back', runs_path %>

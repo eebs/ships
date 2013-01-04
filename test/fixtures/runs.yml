@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  next_due: 2013-01-04 11:24:14
+  ship: MyString
+  ship_number: 1
+  status: MyString
+  sell_price: 1.5
+  start_date: 2013-01-04 11:24:14
+  sell_date: 2013-01-04 11:24:14
+  notes: MyText
+
+two:
+  next_due: 2013-01-04 11:24:14
+  ship: MyString
+  ship_number: 1
+  status: MyString
+  sell_price: 1.5
+  start_date: 2013-01-04 11:24:14
+  sell_date: 2013-01-04 11:24:14
+  notes: MyText
