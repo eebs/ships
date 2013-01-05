@@ -11,11 +11,10 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130105021305) do
+ActiveRecord::Schema.define(:version => 20130105053306) do
 
   create_table "runs", :force => true do |t|
     t.string   "next_due"
-    t.string   "ship"
     t.integer  "ship_number"
     t.float    "sell_price"
     t.string   "start_date"
