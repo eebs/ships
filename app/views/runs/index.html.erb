@@ -16,7 +16,7 @@
     </thead>
     <tbody>
     <% @runs.each do |run| %>
-      <tr>
+      <tr style="background-color: <%= run.status.color %>">
         <td><%= 
             unless run.next_due.empty?
                 Time.zone.parse(run.next_due).to_formatted_s(:short)
