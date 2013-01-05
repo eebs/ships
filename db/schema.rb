@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130105202657) do
+ActiveRecord::Schema.define(:version => 20130105214338) do
 
   create_table "runs", :force => true do |t|
     t.string   "next_due"
