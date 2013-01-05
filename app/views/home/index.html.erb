@@ -1,5 +1,23 @@
 <h3>Needs Attention</h3>
 
+<% unless @attention.empty? %>
+    <%= render 'home/attention' %>
+<% else %>
+    No ships need attention
+<% end %>
+
 <h3>In Progress</h3>
 
+<% unless @progress.empty? %>
+    <%= render 'home/progress' %>
+<% else %>
+    No ships in progress
+<% end %>
+
 <h3>Sold</h3>
+
+<% unless @sold.empty? %>
+    <%= render 'home/sold' %>
+<% else %>
+    No ships sold
+<% end %>

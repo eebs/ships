@@ -1,0 +1,24 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Ship</th>
+            <th>#</th>
+            <th>Sell Price</th>
+            <th>Start Date</th>
+            <th>Sell Date</th>
+            <th>Notes</th>
+        </tr>
+    </thead>
+    <tbody>
+    <% @sold.each do |run| %>
+        <tr>
+            <td><%= run.ship.name %></td>
+            <td><%= run.ship_number %></td>
+            <td><%= number_to_currency(run.sell_price) if run.sell_price %></td>
+            <td><%= run.start_date %></td>
+            <td><%= run.sell_date %></td>
+            <td><%= run.notes %></td>
+        </tr>
+    <% end %>
+    </tbody>
+</table>

@@ -1,25 +1,30 @@
 <h1>Listing ships</h1>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Ship type</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Ship type</th>
+      <th>Modify</th>
+    </tr>
+  </thead>
 
-<% @ships.each do |ship| %>
-  <tr>
-    <td><%= ship.name %></td>
-    <td><%= ship.ship_type %></td>
-    <td><%= link_to 'Show', ship %></td>
-    <td><%= link_to 'Edit', edit_ship_path(ship) %></td>
-    <td><%= link_to 'Destroy', ship, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+  <tbody>
+  <% @ships.each do |ship| %>
+    <tr>
+      <td><%= ship.name %></td>
+      <td><%= ship.ship_type %></td>
+      <td>
+        <div class="btn-toolbar">
+          <div class="btn-group">
+            <a class="btn" href=<%= edit_ship_url(ship) %>><i class="icon-edit"></i></a>
+            <%= link_to raw('<i class="icon-remove"></i>'), ship, class: 'btn', method: :delete, data: { confirm: 'Are you sure?' } %>
+          </div>
+        </div>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
 </table>
-
-<br />
 
 <%= link_to 'New Ship', new_ship_path %>

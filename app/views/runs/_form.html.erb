@@ -12,38 +12,38 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :next_due %><br />
-    <%= f.datetime_select :next_due %>
+    <%= f.label :next_due %>
+    <%= f.text_field :next_due %>
   </div>
   <div class="field">
-    <%= f.label :ship %><br />
+    <%= f.label :ship %>
     <%= collection_select :run, :ship_id, Ship.all, :id, :name, :prompt => true %>
   </div>
   <div class="field">
-    <%= f.label :ship_number %><br />
+    <%= f.label :ship_number %>
     <%= f.number_field :ship_number %>
   </div>
   <div class="field">
-    <%= f.label :status %><br />
+    <%= f.label :status %>
     <%= collection_select :run, :status_id, Status.all, :id, :name, :prompt => true %>
   </div>
   <div class="field">
-    <%= f.label :sell_price %><br />
+    <%= f.label :sell_price %>
     <%= f.text_field :sell_price %>
   </div>
   <div class="field">
-    <%= f.label :start_date %><br />
-    <%= f.datetime_select :start_date %>
+    <%= f.label :start_date %>
+    <%= f.text_field :start_date %>
   </div>
   <div class="field">
-    <%= f.label :sell_date %><br />
-    <%= f.datetime_select :sell_date %>
+    <%= f.label :sell_date %>
+    <%= f.text_field :sell_date %>
   </div>
   <div class="field">
-    <%= f.label :notes %><br />
+    <%= f.label :notes %>
     <%= f.text_area :notes %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :class => 'btn btn-primary btn-large' %>
   </div>
 <% end %>

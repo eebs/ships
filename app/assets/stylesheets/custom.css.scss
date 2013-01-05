@@ -137,3 +137,14 @@ input {
   margin-top: 45px;
   @include box_sizing;
 }
+
+/* tables */
+
+.table td, .table th {
+  padding: 0 6px;
+}
+
+.btn-toolbar {
+  margin-top: 2px;
+  margin-bottom: 2px;
+}

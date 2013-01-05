@@ -1,25 +1,30 @@
-<h1>Listing statuses</h1>
+<h1>Listing Statuses</h1>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Color</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Color</th>
+      <th>Modify</th>
+    </tr>
+  </thead>
 
-<% @statuses.each do |status| %>
-  <tr>
-    <td><%= status.name %></td>
-    <td><%= status.color %></td>
-    <td><%= link_to 'Show', status %></td>
-    <td><%= link_to 'Edit', edit_status_path(status) %></td>
-    <td><%= link_to 'Destroy', status, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+  <tbody>
+  <% @statuses.each do |status| %>
+    <tr>
+      <td><%= status.name %></td>
+      <td><%= status.color %></td>
+      <td>
+        <div class="btn-toolbar">
+          <div class="btn-group">
+            <a class="btn" href=<%= edit_status_url(status) %>><i class="icon-edit"></i></a>
+            <%= link_to raw('<i class="icon-remove"></i>'), status, class: 'btn', method: :delete, data: { confirm: 'Are you sure?' } %>
+          </div>
+        </div>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
 </table>
 
-<br />
-
-<%= link_to 'New Status', new_status_path %>
+<%= link_to 'New Status', new_status_path, class: 'btn btn-primary btn-large' %>
