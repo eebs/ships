@@ -11,7 +11,7 @@
 
   <tbody>
   <% @statuses.each do |status| %>
-    <tr>
+    <tr style="background-color: <%= status.color %>">
       <td><%= status.name %></td>
       <td><%= status.color %></td>
       <td>
