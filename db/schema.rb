@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130105053306) do
+ActiveRecord::Schema.define(:version => 20130105200901) do
 
   create_table "runs", :force => true do |t|
     t.string   "next_due"
@@ -20,9 +20,9 @@ ActiveRecord::Schema.define(:version => 20130105053306) do
     t.string   "start_date"
     t.string   "sell_date"
     t.text     "notes"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-    t.string   "ship_id"
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+    t.integer  "ship_id",     :limit => 255
     t.integer  "status_id"
   end
 
