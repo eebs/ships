@@ -13,7 +13,7 @@ class HomeController < ApplicationController
 
   def get_sold
     if sold_status = Status.find_by_name('Sold')
-      Run.where('status_id = ?', sold_status.id).order('sell_date')
+      Run.where('status_id = ?', sold_status.id).order('sell_date DESC')
     else
       []
     end
@@ -36,7 +36,11 @@ class HomeController < ApplicationController
   end
 
   def get_progress
-    []
+    if sold_status = Status.find_by_name('Ship Production')
+      Run.where('status_id = ?', sold_status.id).order('sell_date DESC')
+    else
+      []
+    end
   end
 
 end

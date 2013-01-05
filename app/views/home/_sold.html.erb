@@ -15,8 +15,16 @@
             <td><%= run.ship.name %></td>
             <td><%= run.ship_number %></td>
             <td><%= number_to_currency(run.sell_price) if run.sell_price %></td>
-            <td><%= run.start_date %></td>
-            <td><%= run.sell_date %></td>
+            <td><%= 
+                unless run.start_date.empty?
+                    Time.zone.parse(run.start_date).to_formatted_s(:short)
+                end
+            %></td>
+            <td><%= 
+                unless run.sell_date.empty?
+                    Time.zone.parse(run.sell_date).to_formatted_s(:short)
+                end
+            %></td>
             <td><%= run.notes %></td>
         </tr>
     <% end %>

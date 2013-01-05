@@ -5,32 +5,27 @@
         <th>Ship</th>
         <th>#</th>
         <th>Status</th>
-        <th>Sell Price</th>
         <th>Start Date</th>
-        <th>Sell Date</th>
         <th>Notes</th>
-        <th>Modify</th>
         </tr>
     </thead>
     <tbody>
     <% @progress.each do |run| %>
       <tr>
-        <td><%= run.next_due %></td>
+        <td><%= 
+            unless run.next_due.empty?
+                Time.zone.parse(run.next_due).to_formatted_s(:short)
+            end
+        %></td>
         <td><%= run.ship.name %></td>
         <td><%= run.ship_number %></td>
         <td><%= run.status.name %></td>
-        <td><%= number_to_currency(run.sell_price) if run.sell_price %></td>
-        <td><%= run.start_date %></td>
-        <td><%= run.sell_date %></td>
+        <td><%= 
+            unless run.start_date.empty?
+                Time.zone.parse(run.start_date).to_formatted_s(:short)
+            end
+        %></td>
         <td><%= run.notes %></td>
-        <td>
-        <div class="btn-toolbar">
-          <div class="btn-group">
-            <a class="btn" href=<%= edit_run_url(run) %>><i class="icon-edit"></i></a>
-            <%= link_to raw('<i class="icon-remove"></i>'), run, class: 'btn', method: :delete, data: { confirm: 'Are you sure?' } %>
-          </div>
-        </div>
-      </td>
       </tr>
     <% end %>
     </tbody>

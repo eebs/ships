@@ -67,6 +67,13 @@ class RunsController < ApplicationController
   # PUT /runs/1.json
   def update
     @run = Run.find(params[:id])
+    run_params = params[:run]
+    [:next_due, :start_date, :sell_date].each do |date|
+      date_param = run_params[date]
+      if date_param = Time.zone.parse(date_param)
+        run_params[date] = date_param
+      end
+    end
 
     respond_to do |format|
       if @run.update_attributes(params[:run])

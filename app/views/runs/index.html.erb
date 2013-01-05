@@ -1,4 +1,4 @@
-<h1>Listing runs</h1>
+<h3>Runs</h3><hr/>
 
 <table class="table">
     <thead>
@@ -17,13 +17,25 @@
     <tbody>
     <% @runs.each do |run| %>
       <tr>
-        <td><%= run.next_due %></td>
+        <td><%= 
+            unless run.next_due.empty?
+                Time.zone.parse(run.next_due).to_formatted_s(:short)
+            end
+        %></td>
         <td><%= run.ship.name %></td>
         <td><%= run.ship_number %></td>
         <td><%= run.status.name %></td>
         <td><%= number_to_currency(run.sell_price) if run.sell_price %></td>
-        <td><%= run.start_date %></td>
-        <td><%= run.sell_date %></td>
+        <td><%= 
+            unless run.start_date.empty?
+                Time.zone.parse(run.start_date).to_formatted_s(:short)
+            end
+        %></td>
+        <td><%= 
+            unless run.sell_date.empty?
+                Time.zone.parse(run.sell_date).to_formatted_s(:short)
+            end
+        %></td>
         <td><%= run.notes %></td>
         <td>
         <div class="btn-toolbar">
@@ -38,4 +50,4 @@
     </tbody>
 </table>
 
-<%= link_to 'New Run', new_run_path %>
+<%= link_to 'New Run', new_run_path, class: 'btn btn-primary' %>

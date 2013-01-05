@@ -13,7 +13,11 @@
     <tbody>
     <% @attention.each do |run| %>
       <tr style="background-color: <%= run.status.color %>">
-        <td><%= run.next_due %></td>
+        <td><%= 
+            unless run.next_due.empty?
+                Time.zone.parse(run.next_due).to_formatted_s(:short)
+            end
+        %></td>
         <td><%= run.ship.name %></td>
         <td><%= run.ship_number %></td>
         <td><%= run.status.name %></td>
