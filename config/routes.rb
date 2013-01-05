@@ -1,4 +1,8 @@
 Ships::Application.routes.draw do
+  get "report/month"
+
+  get "report/price"
+
   get "home/index"
 
   resources :statuses

@@ -6,6 +6,7 @@
         <ul class="nav pull-right">
           <li class="<%= is_active?("home") %>"><%= link_to "Home",    root_path %></li>
           <li class="<%= is_active?("runs") %>"><%= link_to "Runs",   runs_path %></li>
+          <li class="<%= is_active?("report") %>"><%= link_to "Reports",   report_price_path %></li>
           <li class="<%= is_active?("ships") %>"><%= link_to "Ships",   ships_path %></li>
           <li class="<%= is_active?("statuses") %>"><%= link_to "Statuses", statuses_path %></li>
           <% if false && user_signed_in? %>

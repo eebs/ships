@@ -5,7 +5,9 @@ class RunsController < ApplicationController
     @runs = Run.all
 
     @runs.sort! do |a, b|
-      if a.next_due.empty?
+      if a.next_due.empty? && b.next_due.empty?
+        0
+      elsif a.next_due.empty?
         1
       elsif b.next_due.empty?
         -1 

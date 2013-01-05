@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
   def index
 
-    @sold = get_sold
+    @sold = Run.sold_ordered
     @attention = get_attention
     @progress = get_progress
 
@@ -10,14 +10,6 @@ class HomeController < ApplicationController
 
 
   private
-
-  def get_sold
-    if sold_status = Status.find_by_name('Sold')
-      Run.where('status_id = ?', sold_status.id).order('sell_date DESC')
-    else
-      []
-    end
-  end
 
   def get_attention
     runs = Run.all
