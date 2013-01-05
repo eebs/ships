@@ -12,8 +12,11 @@ class HomeController < ApplicationController
   private
 
   def get_sold
-    sold_status = Status.find_by_name('Sold')
-    Run.where('status_id = ?', sold_status.id).order('sell_date')
+    if sold_status = Status.find_by_name('Sold')
+      Run.where('status_id = ?', sold_status.id).order('sell_date')
+    else
+      []
+    end
   end
 
   def get_attention
