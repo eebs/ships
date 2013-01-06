@@ -43,3 +43,6 @@ gem 'bootstrap-sass', '~> 2.2.1.1'
 
 # PostgreSQL
 gem 'pg'
+
+# Suppress asset info logging
+gem 'quiet_assets', group: :development
