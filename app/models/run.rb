@@ -20,6 +20,13 @@ class Run < ActiveRecord::Base
     end
   end
 
+  # Ensure we have a valid date
+  validates_each :next_due, :sell_date, :start_date do |record, attr, value|
+    if value.present? && !value.is_a?(ActiveSupport::TimeWithZone)
+      record.errors.add(attr, 'must be a valid date')
+    end
+  end
+
   def self.sold_ordered
     if sold_status = Status.find_by_name('Sold')
       where('status_id = ?', sold_status.id).order('sell_date DESC')

@@ -52,7 +52,19 @@ class RunsController < ApplicationController
   # POST /runs
   # POST /runs.json
   def create
-    @run = Run.new(params[:run])
+    run_params = params[:run]
+    [:next_due, :start_date, :sell_date].each do |date|
+      date_param = run_params[date]
+      begin
+        date_param = Time.zone.parse(date_param)
+        if date_param
+          run_params[date] = date_param
+        end
+      rescue ArgumentError => e
+      end
+    end
+
+    @run = Run.new(run_params)
 
     respond_to do |format|
       if @run.save
@@ -72,13 +84,17 @@ class RunsController < ApplicationController
     run_params = params[:run]
     [:next_due, :start_date, :sell_date].each do |date|
       date_param = run_params[date]
-      if date_param = Time.zone.parse(date_param)
-        run_params[date] = date_param
+      begin
+        date_param = Time.zone.parse(date_param)
+        if date_param
+          run_params[date] = date_param
+        end
+      rescue ArgumentError => e
       end
     end
 
     respond_to do |format|
-      if @run.update_attributes(params[:run])
+      if @run.update_attributes(run_params)
         format.html { redirect_to @run, notice: 'Run was successfully updated.' }
         format.json { head :no_content }
       else
