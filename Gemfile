@@ -46,3 +46,7 @@ gem 'pg'
 
 # Suppress asset info logging
 gem 'quiet_assets', group: :development
+
+
+# EVE API Access Layer
+gem 'eaal'
