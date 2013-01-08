@@ -5,6 +5,7 @@ Ships::Application.routes.draw do
   get "report/month"
 
   get "report/price"
+  get "report/" => "report#price"
 
   get "home/index"
 

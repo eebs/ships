@@ -43,7 +43,7 @@ class Run < ActiveRecord::Base
     end
   end
 
-  def self.chart_data(start = 1.month.ago)
+  def self.chart_data(start = 2.month.ago)
     ships = Ship.all
     ships_data = {}
 
