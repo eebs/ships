@@ -1,0 +1,25 @@
+<h3>Open Market Orders</h3><hr/>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Item</th>
+      <th>Price</th>
+      <th>Seller</th>
+      <th>Volume</th>
+      <th>Expires</th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @open_orders.each do |typeID, order| %>
+    <tr>
+      <td><%= order[:name] %></td>
+      <td><%= number_to_currency(order[:price]) %></td>
+      <td><%= order[:seller] %></td>
+      <td><%= order[:volRemaining] %></td>
+      <td><%= order[:duration].to_formatted_s(:long) %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

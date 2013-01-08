@@ -1,4 +1,7 @@
 Ships::Application.routes.draw do
+  get "api/orders"
+  get "api/" => "api#orders"
+
   get "report/month"
 
   get "report/price"

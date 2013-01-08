@@ -1,3 +1,12 @@
+GIT
+  remote: git@github.com:eebs/eaal.git
+  revision: e75dfa3245aeed5e942bec927641bc97bcd2290a
+  specs:
+    eaal (0.1.12)
+      faraday (>= 0.8.4)
+      hpricot (>= 0.6)
+      memcache-client (>= 1.7.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -45,10 +54,6 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.4.0)
-    eaal (0.1.12)
-      faraday (>= 0.8.4)
-      hpricot (>= 0.6)
-      memcache-client (>= 1.7.1)
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
@@ -140,7 +145,7 @@ DEPENDENCIES
   bootstrap-sass (~> 2.2.1.1)
   capistrano
   coffee-rails (~> 3.2.1)
-  eaal
+  eaal!
   jquery-rails
   pg
   quiet_assets
