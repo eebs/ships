@@ -11,6 +11,11 @@ class EveApi
         orders.reject! { |e| e.orderState != '0' }
     end
 
+    def next_order_update
+        api.scope = 'corp'
+        Time.zone.parse(api.MarketOrders.cached_until)
+    end
+
     def type_name(typeID)
         api.scope = 'eve'
         api.TypeName('ids' => typeID).types.first.typeName

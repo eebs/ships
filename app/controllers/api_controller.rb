@@ -19,5 +19,7 @@ class ApiController < ApplicationController
       entry[:duration] = Time.zone.parse(order.issued) + order.duration.to_i.days
       @open_orders[order.typeID] = entry
     end
+
+    @next_update = @api.next_order_update
   end
 end

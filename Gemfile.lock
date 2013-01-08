@@ -1,8 +1,8 @@
 GIT
   remote: git@github.com:eebs/eaal.git
-  revision: 21843d8e42325a466dcd3db4044376536be931ca
+  revision: c5c51a4761c2f66fba198ed827a5eeeb5eba146c
   specs:
-    eaal (0.1.13)
+    eaal (0.1.14)
       faraday (>= 0.8.4)
       hpricot (>= 0.6)
       memcache-client (>= 1.7.1)
@@ -145,7 +145,7 @@ DEPENDENCIES
   bootstrap-sass (~> 2.2.1.1)
   capistrano
   coffee-rails (~> 3.2.1)
-  eaal (= 0.1.13)!
+  eaal (= 0.1.14)!
   jquery-rails
   pg
   quiet_assets

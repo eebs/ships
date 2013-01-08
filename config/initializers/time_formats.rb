@@ -1,1 +1,1 @@
-Time::DATE_FORMATS[:month_and_year] = "%B %Y"
+Time::DATE_FORMATS[:next_updated] = "Next updated at %I:%M %p %Z, %b %d"
