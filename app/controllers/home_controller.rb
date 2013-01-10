@@ -5,7 +5,7 @@ class HomeController < ApplicationController
     @attention = get_attention
     @progress = get_progress
 
-    
+    @now = Time.zone.now
   end
 
 
