@@ -14,7 +14,7 @@ class HomeController < ApplicationController
   def get_attention
     runs = Run.all
     runs.reject! do |e|
-      e.next_due.empty? || Time.zone.parse(e.next_due).future?
+      e.next_due.empty? || !due_soon(e.next_due)
     end
     runs.sort! do |a, b|
       if a.next_due.empty?
@@ -25,6 +25,18 @@ class HomeController < ApplicationController
         a.next_due <=> b.next_due
       end
     end
+  end
+
+  def due_soon(next_due)
+    begin
+      time = Time.zone.parse(next_due)
+      if time
+        # An item is due within one day of the due date.
+        return (time - 1.day).past?
+      end
+    rescue ArgumentError => e
+    end
+    return false
   end
 
   def get_progress
