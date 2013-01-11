@@ -1,4 +1,6 @@
 class ShipsController < ApplicationController
+  before_filter :authenticate_user!
+
   # GET /ships
   # GET /ships.json
   def index

@@ -23,9 +23,8 @@
           <li class="divider-vertical"></li>
         </ul>
         <ul class="nav pull-right">
-          <% unless user_signed_in? %>
-            <li class="<%= is_active?("home") %>"><%= link_to "Home",    root_path %></li>
-          <% else %>
+          <li class="<%= is_active?("home") %>"><%= link_to "Home",    root_path %></li>
+          <% if user_signed_in? %>
             <li class="<%= is_active?("runs") %>"><%= link_to "Runs",   runs_path %></li>
             <li class="<%= is_active?("report") %>"><%= link_to "Reports",   report_price_path %></li>
             <li class="<%= is_active?("api") %>"><%= link_to "Orders",   api_orders_path %></li>
