@@ -11,7 +11,9 @@
         <th>Start Date</th>
         <th>Sell Date</th>
         <th>Notes</th>
+        <% if can? :manage, Run %>
         <th>Modify</th>
+        <% end %>
         </tr>
     </thead>
     <tbody>
@@ -37,6 +39,7 @@
             end
         %></td>
         <td><%= run.notes %></td>
+        <% if can? :manage, Run %>
         <td>
         <div class="btn-toolbar">
           <div class="btn-group">
@@ -45,6 +48,7 @@
           </div>
         </div>
       </td>
+      <% end %>
       </tr>
     <% end %>
     </tbody>

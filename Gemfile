@@ -52,3 +52,4 @@ gem 'quiet_assets', group: :development
 gem 'eaal', '0.1.14', :git => 'git@github.com:eebs/eaal.git'
 
 gem 'devise'
+gem 'cancan'

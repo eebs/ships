@@ -15,8 +15,8 @@
               </ul>
             </li>
           <% else %>
-            <li><%= link_to 'Log In', new_user_session_url %></li>
             <li><%= link_to 'Sign Up', new_user_registration_url %></li>
+            <li><%= link_to 'Log In', new_user_session_url %></li>
           <% end %>
         </ul>
         <ul class="nav pull-right">
@@ -28,8 +28,19 @@
             <li class="<%= is_active?("runs") %>"><%= link_to "Runs",   runs_path %></li>
             <li class="<%= is_active?("report") %>"><%= link_to "Reports",   report_price_path %></li>
             <li class="<%= is_active?("api") %>"><%= link_to "Orders",   api_orders_path %></li>
-            <li class="<%= is_active?("ships") %>"><%= link_to "Ships",   ships_path %></li>
-            <li class="<%= is_active?("statuses") %>"><%= link_to "Statuses", statuses_path %></li>
+            <% if user_signed_in? && current_user.admin? %>
+            <li class="dropdown <%= is_active?("ships") %><%= is_active?("statuses") %>">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li class="nav-header">EvE</li>
+                <li><a href="<%= ships_path %>"><i class=" icon-cog"></i> Ships</a>
+                <li><a href="<%= statuses_path %>"><i class=" icon-cog"></i> Statuses</a>
+                <li class="divider"></li>
+                <li class="nav-header">Users</li>
+                <li><a href="<%= root_path %>"><i class=" icon-cog"></i> Users</a>
+              </ul>
+            </li>
+            <% end %>
           <% end %>
         </ul>
       </nav>
