@@ -1,4 +1,6 @@
 Ships::Application.routes.draw do
+  devise_for :users
+
   get "api/orders"
   get "api/" => "api#orders"
 

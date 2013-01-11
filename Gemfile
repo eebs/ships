@@ -50,3 +50,5 @@ gem 'quiet_assets', group: :development
 
 # EVE API Access Layer
 gem 'eaal', '0.1.14', :git => 'git@github.com:eebs/eaal.git'
+
+gem 'devise'
