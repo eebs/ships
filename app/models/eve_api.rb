@@ -4,6 +4,11 @@ class EveApi
         @api ||=  EAAL::API.new
     end
 
+    def orders
+        api.scope = 'corp'
+        orders = api.MarketOrders.orders
+    end
+
     def open_orders
         api.scope = 'corp'
         orders = api.MarketOrders.orders

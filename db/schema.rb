@@ -11,7 +11,24 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130105214338) do
+ActiveRecord::Schema.define(:version => 20130110190215) do
+
+  create_table "orders", :force => true do |t|
+    t.string   "orderID"
+    t.string   "charID"
+    t.string   "stationID"
+    t.string   "volEntered"
+    t.string   "volRemaining"
+    t.string   "minVolume"
+    t.string   "orderState"
+    t.string   "typeID"
+    t.string   "range"
+    t.string   "duration"
+    t.string   "price"
+    t.string   "bid"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
 
   create_table "runs", :force => true do |t|
     t.string   "next_due"
