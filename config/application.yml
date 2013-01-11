@@ -1,0 +1,7 @@
+development:
+  mailer_password: ''
+
+test:
+
+production:
+  mailer_password: ''
