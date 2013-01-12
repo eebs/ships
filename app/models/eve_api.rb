@@ -14,6 +14,7 @@ class EveApi
         orders = api.MarketOrders.orders
         # Reject all orders that are not open
         orders.reject! { |e| e.orderState != '0' }
+        orders
     end
 
     def next_order_update
