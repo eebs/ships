@@ -40,8 +40,10 @@ class HomeController < ApplicationController
   end
 
   def get_progress
-    if sold_status = Status.find_by_name('Ship Production')
-      Run.where('status_id = ?', sold_status.id).order('sell_date DESC')
+    ship_production = Status.find_by_name('Ship Production')
+    component_prodction = Status.find_by_name('Component Production')
+    if ship_production && component_prodction
+      Run.where('status_id = ? OR status_id = ?', ship_production.id, component_prodction.id).order('sell_date DESC')
     else
       []
     end
