@@ -1,0 +1,26 @@
+<h3>Notifications</h3><hr/>
+
+<% if @notifications %>
+  <ol id="notifications" class="unstyled">
+  <% @notifications.each do |note| %>
+    <li class="notification">
+      <div class="row">
+        <div class="note-meta span3">
+          <div class="pull-right">
+            <div class="muted"><span><%= time_ago_in_words note.created_at %> ago</span></div>
+            <% if note.read_at.nil? %><div><%= link_to 'Dismiss', notifications_dismiss_path( :id => note.id ), class: 'pull-right btn btn-mini' %></div><% end %>
+          </div>
+        </div>
+        <div class="span9">
+          <div class="note-text <%= if note.read_at.nil? then 'note-text-unread' end%>">
+            <div class="note-title"><strong><%= note.message.title %></strong></div>
+            <div><p><%= note.message.body %></p></div>
+          </div>
+        </div>
+      </div>
+    </li>
+  <% end %>
+  </ol>
+<% else %>
+    <span>No notifications yet.</span>
+<% end %>

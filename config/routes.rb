@@ -1,4 +1,8 @@
 Ships::Application.routes.draw do
+  get "notifications/" => "notifications#index"
+  get "notifications/index"
+  get "notifications/dismiss"
+
   devise_for :users
 
   get "api/orders"
