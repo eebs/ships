@@ -1,6 +1,6 @@
 <h3>Notifications</h3><hr/>
 
-<% if @notifications %>
+<% unless @notifications.empty? %>
   <ol id="notifications" class="unstyled">
   <% @notifications.each do |note| %>
     <li class="notification">
@@ -14,7 +14,7 @@
         <div class="span9">
           <div class="note-text <%= if note.read_at.nil? then 'note-text-unread' end%>">
             <div class="note-title"><strong><%= note.message.title %></strong></div>
-            <div><p><%= note.message.body %></p></div>
+            <div><%= simple_format note.message.body %></div>
           </div>
         </div>
       </div>

@@ -13,4 +13,10 @@ class User < ActiveRecord::Base
 
   has_many :notifications
   has_many :messages, :through => :notifications
+
+  def notify(message)
+    if message.instance_of? Message
+      messages << message
+    end
+  end
 end

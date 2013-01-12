@@ -7,9 +7,6 @@ class ApiController < ApplicationController
   end
 
   def orders
-    orders = @api.orders
-    @changes = Order.update_orders(orders)
-
     @open_orders_hash = {}
     if open_orders = @api.open_orders
       open_orders.each do |order|
