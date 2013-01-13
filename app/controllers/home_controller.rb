@@ -43,7 +43,7 @@ class HomeController < ApplicationController
     ship_production = Status.find_by_name('Ship Production')
     component_prodction = Status.find_by_name('Component Production')
     if ship_production && component_prodction
-      Run.where('status_id = ? OR status_id = ?', ship_production.id, component_prodction.id).order('sell_date DESC')
+      Run.where('status_id = ? OR status_id = ?', ship_production.id, component_prodction.id).order('next_due')
     else
       []
     end
