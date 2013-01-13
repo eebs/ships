@@ -139,6 +139,14 @@ input {
   @extend .error;
  }
 
+ .inline-label {
+  display: inline;
+ }
+
+ .remember-me {
+  margin-bottom: 6px;
+ }
+
 /* miscellaneous */
 
 .debug_dump {
