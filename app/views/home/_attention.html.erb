@@ -15,9 +15,14 @@
     <tbody>
     <% @attention.each do |run| %>
       <tr style="background-color: <%= run.status.color %>">
-        <td><%= 
+        <td title="<%= Time.zone.parse(run.next_due) unless run.next_due.empty? %>"><%= 
             unless run.next_due.empty?
-                Time.zone.parse(run.next_due).to_formatted_s(:short)
+                due = Time.zone.parse(run.next_due)
+                if due.future?
+                    distance_of_time_in_words_to_now(due) + " from now"
+                else
+                    time_ago_in_words(due) + " ago"
+                end
             end
         %></td>
         <td><%= run.ship.name %></td>
