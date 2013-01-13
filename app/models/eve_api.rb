@@ -7,14 +7,15 @@ class EveApi
     def orders
         api.scope = 'corp'
         orders = api.MarketOrders.orders
+        # Only fetch sell orders
+        orders.reject! { |e| e.bid != '0' }
     end
 
     def open_orders
-        api.scope = 'corp'
-        orders = api.MarketOrders.orders
+        api_orders = orders
         # Reject all orders that are not open
-        orders.reject! { |e| e.orderState != '0' }
-        orders
+        api_orders.reject! { |e| e.orderState != '0' }
+        api_orders
     end
 
     def order_by_id(orderID)
