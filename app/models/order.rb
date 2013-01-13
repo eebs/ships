@@ -7,27 +7,47 @@ class Order < ActiveRecord::Base
   end
 
   def self.update_orders
+    self.update_api_orders
+    self.update_db_orders
+  end
+
+  def self.update_api_orders
     api = EveApi.new
     orders = api.orders
-    changes = {}
     orders.each do |order|
-      order_attributes = get_attributes(order) 
-      if db_order = Order.find_by_orderID(order.orderID) # Existing order
-        db_order.assign_attributes(order_attributes)
-        if db_order.changed?
-          changes[order.orderID] = db_order.changes
-          self.send_change_notification(db_order)
-          db_order.save
-        end
-      else # New order
-        new_order = Order.new(order_attributes)
-        new_order.save
-        self.send_new_notification(new_order)
+      self.update_changes(order)
+    end
+  end
+
+  def self.update_db_orders
+    orders = Order.where(:orderState => '0')
+    api = EveApi.new
+    orders.each do |db_order|
+      if api_order = api.order_by_id(db_order.orderID)
+        self.update_changes(api_order, db_order)
       end
     end
   end
 
 private
+
+  def self.update_changes(api_order, db_order = nil)
+    order_attributes = get_attributes(api_order) 
+    db_order ||= Order.find_by_orderID(api_order.orderID)
+    changes = {}
+    if db_order # Existing order
+      db_order.assign_attributes(order_attributes)
+      if db_order.changed?
+        changes[api_order.orderID] = db_order.changes
+        self.send_change_notification(db_order)
+        db_order.save
+      end
+    else # New order
+      new_order = Order.new(order_attributes)
+      new_order.save
+      self.send_new_notification(new_order)
+    end
+  end
 
   def self.get_attributes(order)
     attribs = {

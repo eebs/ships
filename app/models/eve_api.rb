@@ -17,6 +17,17 @@ class EveApi
         orders
     end
 
+    def order_by_id(orderID)
+        api.scope ='corp'
+        begin
+            market_orders = api.MarketOrders('orderID' => orderID)
+            orders = market_orders.orders
+            return orders.first
+        rescue EveAPIException532 => e # Catch order not found
+            return nil
+        end
+    end
+
     def next_order_update
         api.scope = 'corp'
         Time.zone.parse(api.MarketOrders.cached_until)
