@@ -68,4 +68,14 @@ class Run < ActiveRecord::Base
       prices[run.sell_date.to_date] = run.total_price
     end
   end
+
+  def self.active
+    sold = Status.find_by_name('Sold')
+    where('status_id != ?', sold.id)
+  end
+
+  def self.inactive
+    sold = Status.find_by_name('Sold')
+    where(:status_id => sold.id)
+  end
 end

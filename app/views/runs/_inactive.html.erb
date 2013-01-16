@@ -1,0 +1,47 @@
+<table class="table">
+    <thead>
+        <tr>
+        <th>Ship</th>
+        <th>#</th>
+        <th>Status</th>
+        <th>Sell Price</th>
+        <th>Start Date</th>
+        <th>Sell Date</th>
+        <th>Notes</th>
+        <% if can? :manage, Run %>
+        <th>Modify</th>
+        <% end %>
+        </tr>
+    </thead>
+    <tbody>
+    <% @inactive.each do |run| %>
+      <tr style="background-color: <%= run.status.color %>">
+        <td><%= run.ship.name %></td>
+        <td><%= run.ship_number %></td>
+        <td><%= run.status.name %></td>
+        <td><%= number_to_currency(run.sell_price) if run.sell_price %></td>
+        <td><%= 
+            unless run.start_date.empty?
+                Time.zone.parse(run.start_date).to_formatted_s(:short)
+            end
+        %></td>
+        <td><%= 
+            unless run.sell_date.empty?
+                Time.zone.parse(run.sell_date).to_formatted_s(:short)
+            end
+        %></td>
+        <td><%= run.notes %></td>
+        <% if can? :manage, Run %>
+        <td>
+        <div class="btn-toolbar">
+          <div class="btn-group">
+            <a class="btn" href=<%= edit_run_url(run) %>><i class="icon-edit"></i></a>
+            <%= link_to raw('<i class="icon-remove"></i>'), run, class: 'btn', method: :delete, data: { confirm: 'Are you sure?' } %>
+          </div>
+        </div>
+      </td>
+      <% end %>
+      </tr>
+    <% end %>
+    </tbody>
+</table>

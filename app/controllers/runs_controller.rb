@@ -5,24 +5,8 @@ class RunsController < ApplicationController
   # GET /runs
   # GET /runs.json
   def index
-    @runs = Run.all
-
-    @runs.sort! do |a, b|
-      if a.next_due.empty? && b.next_due.empty?
-        0
-      elsif a.next_due.empty?
-        1
-      elsif b.next_due.empty?
-        -1 
-      else
-        a.next_due <=> b.next_due
-      end
-    end
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @runs }
-    end
+    @active = Run.active
+    @inactive = Run.inactive
   end
 
   # GET /runs/1
