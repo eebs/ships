@@ -1,12 +1,8 @@
 class ApiController < ApplicationController
   before_filter :authenticate_user!
 
-  def initialize
-    super
-    @api = EveApi.new
-  end
-
   def orders
+    @api = EveApi.new
     @open_orders_hash = {}
     if open_orders = @api.open_orders
       open_orders.each do |order|
