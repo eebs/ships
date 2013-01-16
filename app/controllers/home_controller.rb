@@ -4,8 +4,6 @@ class HomeController < ApplicationController
     @sold = Run.sold_ordered
     @attention = get_attention
     @progress = get_progress
-
-    @now = Time.zone.now
   end
 
 
