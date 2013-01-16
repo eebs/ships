@@ -14,11 +14,7 @@ class Run < ActiveRecord::Base
   validates_with RunValidator
 
   # Ensure sell price is greater than 0, only if it exists
-  validates_each :sell_price do |record, attr, value|
-    if value.present? && value < 0 then
-        record.errors.add(attr, 'must be greater than zero or not be set')
-    end
-  end
+  validates :sell_price, :numericality => { :greater_than => 0 }, :allow_blank => true
 
   # Ensure we have a valid date
   validates_each :next_due, :sell_date, :start_date do |record, attr, value|
