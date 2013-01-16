@@ -71,11 +71,11 @@ class Run < ActiveRecord::Base
 
   def self.active
     sold = Status.find_by_name('Sold')
-    where('status_id != ?', sold.id)
+    where('status_id != ?', sold.id).order('next_due')
   end
 
   def self.inactive
     sold = Status.find_by_name('Sold')
-    where(:status_id => sold.id)
+    where(:status_id => sold.id).order('sell_date DESC')
   end
 end
