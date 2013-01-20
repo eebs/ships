@@ -4,6 +4,7 @@ class Characters::RegistrationsController < Devise::RegistrationsController
 
   def new
     logger.warn "Trusted: " + ((igb.trusted? == true) ? 'yes' : 'no')
+    logger.warn "From header: " + request.headers['HTTP_EVE_TRUSTED']
     @already_registered = Character.find_by_name(igb.char_name)
     super
   end
