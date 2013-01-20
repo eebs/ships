@@ -6,6 +6,8 @@ server {
   listen 80;
   server_name <%= application %>.eebsy.com;
   root <%= current_path %>/public;
+  underscores_in_headers on;
+  ignore_invalid_headers off;
 
   location ^~ /assets/ {
     gzip_static on;
