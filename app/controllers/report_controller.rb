@@ -1,5 +1,6 @@
 class ReportController < ApplicationController
   before_filter :authenticate_character!
+  before_filter :authenticate_admin!
   before_filter :check_igb, :only => :price
 
   def month

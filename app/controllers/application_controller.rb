@@ -13,6 +13,13 @@ class ApplicationController < ActionController::Base
     current_character
   end
 
+  def authenticate_admin!
+    unless character_signed_in? && current_character.admin?
+      flash[:error] = "You are not authorized to access this page."
+      redirect_to root_url
+    end
+  end
+
   rescue_from CanCan::AccessDenied do |exception|
         flash[:error] = exception.message
         redirect_to root_url

@@ -29,8 +29,6 @@ class Ability
 
     if character.admin == true
         can :manage, :all
-    else
-        can :read, Run
     end
   end
 end
