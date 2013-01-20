@@ -90,9 +90,9 @@ private
   end
 
   def self.send_to_users(message)
-    users = User.all
-    users.each do |user|
-      user.notify(message)
+    characters = Character.all
+    characters.each do |characters|
+      characters.notify(message)
     end
   end
 

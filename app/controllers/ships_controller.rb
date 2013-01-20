@@ -1,5 +1,5 @@
 class ShipsController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate_character!
   load_and_authorize_resource
 
   # GET /ships

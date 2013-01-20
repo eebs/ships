@@ -8,6 +8,7 @@ class Character < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :password, :password_confirmation, :remember_me
   attr_accessible :name, :characterid
+  attr_accessible :admin
 
   validates_presence_of     :name
   validates_uniqueness_of   :name, :case_sensitive => false, :allow_blank => true, :if => :name_changed?
@@ -15,4 +16,13 @@ class Character < ActiveRecord::Base
   validates_presence_of     :password, :on => :create
   validates_confirmation_of :password, :on => :create
   validates_length_of       :password, :within => Devise.password_length, :allow_blank => true
+
+  has_many :notifications
+  has_many :messages, :through => :notifications
+
+  def notify(message)
+    if message.instance_of? Message
+      messages << message
+    end
+  end
 end

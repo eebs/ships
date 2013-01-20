@@ -3,9 +3,14 @@ class ApplicationController < ActionController::Base
   before_filter :notification_count
 
   def notification_count
-    if user_signed_in?
-        @notification_count = current_user.notifications.where(:read_at => nil).count
+    if character_signed_in?
+        @notification_count = current_character.notifications.where(:read_at => nil).count
     end
+  end
+
+  # Override for CanCan
+  def current_user
+    current_character
   end
 
   rescue_from CanCan::AccessDenied do |exception|

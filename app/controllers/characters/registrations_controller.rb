@@ -8,8 +8,16 @@ class Characters::RegistrationsController < Devise::RegistrationsController
   end
 
   def create
+    # Use name and id from IGB
     params[:character][:name] = igb.char_name
     params[:character][:characterid] = igb.char_id
+    super
+  end
+
+  def update
+    # Don't allow user to change name or id
+    params[:character].delete(:name)
+    params[:character].delete(:characterid)
     super
   end
 

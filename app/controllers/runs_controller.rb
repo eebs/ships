@@ -1,5 +1,5 @@
 class RunsController < ApplicationController
-  before_filter :authenticate_either!
+  before_filter :authenticate_character!
   load_and_authorize_resource
 
   # GET /runs
@@ -100,14 +100,6 @@ class RunsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to runs_url }
       format.json { head :no_content }
-    end
-  end
-
-private
-
-  def authenticate_either!
-    if !(user_signed_in? || character_signed_in?)
-      authenticate_character!
     end
   end
 end

@@ -1,6 +1,6 @@
 class Notification < ActiveRecord::Base
-  attr_accessible :message_id, :read_at, :user_id
+  attr_accessible :message_id, :read_at, :character_id
 
-  belongs_to :user
+  belongs_to :character
   belongs_to :message
 end

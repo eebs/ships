@@ -1,5 +1,5 @@
 class ApiController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate_character!
 
   def orders
     @api = EveApi.new

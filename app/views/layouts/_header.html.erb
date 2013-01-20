@@ -3,12 +3,10 @@
     <div class="container">
       <%= link_to "Koprulu Sector", '/', id: "logo" %>
       <nav>
-        <% if !(user_signed_in? || character_signed_in?) %>
-          <%= render "layouts/unauthenticated_header" %>
-        <% elsif user_signed_in? %>
-          <%= render "layouts/user_header" %>
-        <% elsif character_signed_in? %>
+        <% if character_signed_in? %>
           <%= render "layouts/character_header" %>
+        <% else %>
+          <%= render "layouts/unauthenticated_header" %>
         <% end %>
       </nav>
     </div>

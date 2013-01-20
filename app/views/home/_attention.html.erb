@@ -7,7 +7,7 @@
         <th>Status</th>
         <th>Sell Price</th>
         <th>Notes</th>
-        <% if user_signed_in? && (can? :manage, Run) %>
+        <% if character_signed_in? && (can? :manage, Run) %>
         <th>Modify</th>
         <% end %>
         </tr>
@@ -30,7 +30,7 @@
         <td><%= run.status.name %></td>
         <td><%= number_to_currency(run.sell_price) if run.sell_price %></td>
         <td><%= run.notes %></td>
-        <% if user_signed_in? && (can? :manage, Run) %>
+        <% if character_signed_in? && (can? :manage, Run) %>
             <td>
             <div class="btn-toolbar">
               <div class="btn-group">
