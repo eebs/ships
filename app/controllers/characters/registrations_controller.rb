@@ -3,7 +3,7 @@ class Characters::RegistrationsController < Devise::RegistrationsController
   before_filter :check_trust, :only => :create
 
   def new
-    logger.debug "Trusted: " + ((igb.trusted? == true) ? 'yes' : 'no')
+    logger.warn "Trusted: " + ((igb.trusted? == true) ? 'yes' : 'no')
     @already_registered = Character.find_by_name(igb.char_name)
     super
   end
