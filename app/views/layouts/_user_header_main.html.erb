@@ -1,0 +1,21 @@
+<ul class="nav pull-right">
+  <li class="<%= is_active?("home") %>"><%= link_to "Home",    root_path %></li>
+  <% if user_signed_in? %>
+    <li class="<%= is_active?("runs") %>"><%= link_to "Runs",   runs_path %></li>
+    <li class="<%= is_active?("report") %>"><%= link_to "Reports",   report_price_path %></li>
+    <li class="<%= is_active?("api") %>"><%= link_to "Orders",   api_orders_path %></li>
+    <% if user_signed_in? && current_user.admin? %>
+    <li class="dropdown <%= is_active?("ships") %><%= is_active?("statuses") %>">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin<b class="caret"></b></a>
+      <ul class="dropdown-menu">
+        <li class="nav-header">EvE</li>
+        <li><a href="<%= ships_path %>"><i class=" icon-plus-sign"></i> Ships</a>
+        <li><a href="<%= statuses_path %>"><i class=" icon-plus-sign"></i> Statuses</a>
+        <li class="divider"></li>
+        <li class="nav-header">Users</li>
+        <li><a href="<%= root_path %>"><i class=" icon-user"></i> Users</a>
+      </ul>
+    </li>
+    <% end %>
+  <% end %>
+</ul>

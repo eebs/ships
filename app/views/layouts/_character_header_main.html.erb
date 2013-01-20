@@ -1,0 +1,6 @@
+<ul class="nav pull-right">
+  <li class="<%= is_active?("home") %>"><%= link_to "Home",    root_path %></li>
+  <% if character_signed_in? %>
+    <li class="<%= is_active?("runs") %>"><%= link_to "Runs",   runs_path %></li>
+  <% end %>
+</ul>

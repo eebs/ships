@@ -185,3 +185,19 @@ input {
 .note-text-unread {
   background-color: #EEF9FF;
 }
+
+/* sign in/up */
+
+.registered_name {
+  color: $red;
+  font-weight: 600;
+}
+
+.registration_character {
+  margin: 20px 0;
+}
+
+.registration_character_name {
+  font-size: 20px;
+  margin-left: 5px;
+}

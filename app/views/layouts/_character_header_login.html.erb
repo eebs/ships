@@ -1,0 +1,20 @@
+<ul class="nav pull-right">
+  <% if character_signed_in? %>
+    <li class="dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Account<b class="caret"></b></a>
+      <ul class="dropdown-menu">
+        <li class="nav-header">Account</li>
+        <li><a href="<%= edit_character_registration_path %>"><i class=" icon-wrench"></i> Settings</a></li>
+        <li><a href="<%= notifications_path %>"><i class=" icon-flag"></i> Notifications</a></li>
+        <li class="divider"></li>
+        <li><%= link_to "Sign Out",  destroy_character_session_path, method: :delete %></li>
+      </ul>
+    </li>
+    <li class="divider-vertical"></li>
+    <% if @notification_count && @notification_count > 0 %><li><a href="<%= notifications_path %>"><span class="badge badge-important"><%= @notification_count %></span></a></li>
+    <li class="divider-vertical"></li><% end %>
+  <% else %>
+    <li><%= link_to 'Sign Up', new_character_registration_url %></li>
+    <li><%= link_to 'Log In', new_character_session_url %></li>
+  <% end %>
+</ul>

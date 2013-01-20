@@ -1,4 +1,6 @@
 Ships::Application.routes.draw do
+  devise_for :characters, :controllers => { :registrations => "characters/registrations" }
+
   get "notifications/" => "notifications#index"
   get "notifications/index"
   get "notifications/dismiss"
