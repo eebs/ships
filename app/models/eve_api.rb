@@ -9,6 +9,7 @@ class EveApi
         orders = api.MarketOrders.orders
         # Only fetch sell orders
         orders.reject! { |e| e.bid != '0' }
+        orders
     end
 
     def open_orders
