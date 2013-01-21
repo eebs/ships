@@ -1,0 +1,27 @@
+<h3>Characters</h3><hr/>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Character ID</th>
+      <th>Last Sign In</th>
+      <th>Registered</th>
+      <th>Admin</th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @characters.each do |character| %>
+    <tr>
+      <td><%= image_tag "http://image.eveonline.com/Character/#{character.characterid}_32.jpg" %> <%= character.name %></td>
+      <td><%= character.characterid %></td>
+      <td><%= character.current_sign_in_at.getlocal.to_formatted_s(:long_twelve_hour) %></td>
+      <td><%= character.created_at.getlocal.to_formatted_s(:long_twelve_hour) %></td>
+      <td><%= character.admin? ? 'Yes' : 'No' %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New Character', new_character_path, class: 'btn btn-primary' %>

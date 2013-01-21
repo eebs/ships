@@ -1,5 +1,6 @@
 Ships::Application.routes.draw do
   devise_for :characters, :controllers => { :registrations => "characters/registrations" }
+  resources :characters
 
   get "notifications/" => "notifications#index"
   get "notifications/index"
