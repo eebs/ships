@@ -25,4 +25,8 @@ class Character < ActiveRecord::Base
       messages << message
     end
   end
+
+  def unread_notifications
+    notifications.where(:read_at => nil)
+  end
 end

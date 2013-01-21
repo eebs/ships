@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
   def notification_count
     if character_signed_in?
-        @notification_count = current_character.notifications.where(:read_at => nil).count
+        @notification_count = current_character.unread_notifications.count
     end
   end
 
