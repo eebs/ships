@@ -6,7 +6,7 @@
       <%= devise_error_messages! %>
 
       <div class="registration_character">
-        <img src="http://image.eveonline.com/Character/<%= current_character.characterid %>_32.jpg"/> <span class="registration_character_name"><%= current_character.name %></span>
+        <%= character_image_tag current_character.characterid %> <span class="registration_character_name"><%= current_character.name %></span>
       </div>
 
       <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i>

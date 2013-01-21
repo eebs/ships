@@ -24,7 +24,7 @@
             <%= devise_error_messages! %>
 
             <div class="registration_character">
-              <img src="http://image.eveonline.com/Character/<%= igb.char_id %>_32.jpg"/> <span class="registration_character_name"><%= igb.char_name %></span>
+              <%= character_image_tag igb.char_id %> <span class="registration_character_name"><%= igb.char_name %></span>
             </div>
 
             <div><%= f.label "Choose a password" %>

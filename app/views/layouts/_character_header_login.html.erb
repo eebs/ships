@@ -1,7 +1,7 @@
 <ul class="nav pull-right">
   <% if character_signed_in? %>
     <li class="dropdown">
-      <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= image_tag "http://image.eveonline.com/Character/#{current_character.characterid}_32.jpg", :width => 20, :height => 20 %> <%= current_character.name %> <b class="caret"></b></a>
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= character_image_tag current_character.characterid, 32, :width => 20, :height => 20 %> <%= current_character.name %> <b class="caret"></b></a>
       <ul class="dropdown-menu">
         <li class="nav-header">Account</li>
         <li><a href="<%= edit_character_registration_path %>"><i class=" icon-wrench"></i> Settings</a></li>

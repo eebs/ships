@@ -14,7 +14,7 @@
   <tbody>
   <% @characters.each do |character| %>
     <tr>
-      <td><%= image_tag "http://image.eveonline.com/Character/#{character.characterid}_32.jpg" %> <%= character.name %></td>
+      <td><%= character_image_tag character.characterid %> <%= character.name %></td>
       <td><%= character.characterid %></td>
       <td><%= character.current_sign_in_at.getlocal.to_formatted_s(:long_twelve_hour) %></td>
       <td><%= character.created_at.getlocal.to_formatted_s(:long_twelve_hour) %></td>
