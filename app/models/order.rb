@@ -72,7 +72,7 @@ private
     message.body = "Listed at #{order.price}."
     message.save
 
-    self.send_to_users(message)
+    self.send_to_admins(message)
   end
 
   def self.send_change_notification(order)
@@ -86,11 +86,11 @@ private
     message.body = body
     message.save
 
-    self.send_to_users(message)
+    self.send_to_admins(message)
   end
 
-  def self.send_to_users(message)
-    characters = Character.all
+  def self.send_to_admins(message)
+    characters = Character.where(:admin => true)
     characters.each do |characters|
       characters.notify(message)
     end
