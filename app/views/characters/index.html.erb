@@ -16,7 +16,7 @@
     <tr>
       <td><%= character_image_tag character.characterid %> <%= character.name %></td>
       <td><%= character.characterid %></td>
-      <td><%= character.current_sign_in_at.getlocal.to_formatted_s(:long_twelve_hour) %></td>
+      <td title="<%= character.current_sign_in_at %>"><%= time_ago_in_words(character.current_sign_in_at) %></td>
       <td><%= character.created_at.getlocal.to_formatted_s(:long_twelve_hour) %></td>
       <td><%= character.admin? ? 'Yes' : 'No' %></td>
     </tr>
