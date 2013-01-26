@@ -1,7 +1,9 @@
+---
 development:
   mailer_password: ''
 
 test:
+  mailer_password: ''
 
 production:
   mailer_password: ''
