@@ -16,15 +16,15 @@ describe "The application's" do
 
   describe "Home page" do
 
+    before { visit root_path }
     let(:page_title) {""}
     let(:heading) {"Home"}
 
-    before { visit root_path }
-
     it_should_behave_like "all pages"
-    
-    it { should have_content 'Koprulu Sector' }
-    it { should have_content('Home') }
+
+    it { should have_selector('h3', :text => 'Needs Attention') }
+    it { should have_selector('h3', :text => 'In Progress') }
+    it { should have_selector('h3', :text => 'Sold') }
     it { should_not have_title(" | Home") }
   end
 
