@@ -26,6 +26,12 @@ describe "The application's" do
     it { should have_selector('h3', :text => 'In Progress') }
     it { should have_selector('h3', :text => 'Sold') }
     it { should_not have_title(" | Home") }
+
+    describe "with runs needing attention" do
+      it "should have content 'Notes'" do
+        pending
+      end
+    end
   end
 
   describe "Sign In page" do
