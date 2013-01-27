@@ -6,7 +6,9 @@
             <th>Sell Price</th>
             <th>Start Date</th>
             <th>Sell Date</th>
-            <th>Notes</th>
+            <% if character_signed_in? && (can? :manage, Run) %>
+                <th>Notes</th>
+            <% end %>
         </tr>
     </thead>
     <tbody>
@@ -25,7 +27,9 @@
                     Time.zone.parse(run.sell_date).to_formatted_s(:short)
                 end
             %></td>
-            <td><%= run.notes %></td>
+            <% if character_signed_in? && (can? :manage, Run) %>
+                <td><%= run.notes %></td>
+            <% end %>
         </tr>
     <% end %>
     </tbody>
