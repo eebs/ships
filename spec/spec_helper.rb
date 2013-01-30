@@ -51,6 +51,8 @@ Spork.prefork do
 
     # Include Devise TestHelper module in controllers
     config.include Devise::TestHelpers, :type => :controller
+    config.before(:each) { Warden.test_mode! }
+    config.after(:each) { Warden.test_reset! }
   end
 
 end
