@@ -10,8 +10,8 @@ describe "The application's" do
   shared_examples_for "all pages" do
     it { should have_title full_title(page_title) }
     it { should have_content(heading) }
-    it {should have_selector('a', :text => 'Home')}
-    it {should have_selector('a', :text => 'Koprulu Sector')}
+    it { should have_selector('a', :text => 'Home') }
+    it { should have_selector('a', :text => 'Koprulu Sector') }
   end
 
   describe "Home page" do

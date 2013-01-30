@@ -45,6 +45,12 @@ Spork.prefork do
     # the seed, which is printed after each run.
     #     --seed 1234
     config.order = "random"
+
+    # Allow calling of Factory Girl more easily
+    config.include FactoryGirl::Syntax::Methods
+
+    # Include Devise TestHelper module in controllers
+    config.include Devise::TestHelpers, :type => :controller
   end
 
 end
