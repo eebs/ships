@@ -1,9 +1,6 @@
 class HomeController < ApplicationController
   def index
-
-    @sold = Run.sold_ordered
-    @attention = get_attention
-    @progress = get_progress
+    @ships = Run.where('status_id != ?', Status.sold.id)
   end
 
 

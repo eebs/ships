@@ -1,0 +1,42 @@
+<div class="home-ship row">
+  <div class="span3 offset1">
+    <div class="media">
+      <span class="pull-left">
+        <%= image_tag 'http://image.eveonline.com/InventoryType/23757_64.png', :class => 'media-object' %>
+      </span>
+      <div class="media-body">
+        <h4 class="media-heading"><%= run.ship.name %></h4> <h4 class="media-heading ship-light-text">#<%= run.ship_number %></h4>
+        <div class="ship-light-text">Type: <%= run.ship.ship_type %></div>
+        <% if run.start_date.present? %>
+          <div class="ship-light-text">Started: <%= Time.zone.parse(run.start_date).to_s(:month_date) %></div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="span4">
+    <div class="media">
+      <span class="pull-left run-status-indicator" style="background-color: <%= run.status.color %>">
+      </span>
+      <div class="media-body">
+        <h4 class="media-heading"><%= run.status.name %></h4>
+        <div class="ship-light-text">
+          <%=
+          unless run.next_due.empty?
+            due = Time.zone.parse(run.next_due)
+            if due.future?
+                "Current job finishes " + distance_of_time_in_words_to_now(due) + " from now"
+            else
+                "Current job finished " + time_ago_in_words(due) + " ago"
+            end
+          end
+          %>
+        </div>
+        <div class="ship-light-text">
+          Last updated <%= time_ago_in_words(run.updated_at) + ' ago' %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="span3">
+  </div>
+</div>
