@@ -1,5 +1,11 @@
 <ul class="nav pull-right">
   <% if character_signed_in? %>
+    <% if @notification_count %>
+      <li>
+        <a href="<%= notifications_path %>"><span class="badge <%= if @notification_count > 0 then 'badge-important' end %>"><%= @notification_count %></span></a>
+      </li>
+    <% end %>
+    <li class="divider-vertical"></li>
     <li class="dropdown">
       <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= character_image_tag current_character.characterid, 32, :width => 20, :height => 20 %> <%= current_character.name %> <b class="caret"></b></a>
       <ul class="dropdown-menu">
@@ -10,9 +16,6 @@
         <li><%= link_to "Sign Out",  destroy_character_session_path, method: :delete %></li>
       </ul>
     </li>
-    <li class="divider-vertical"></li>
-    <% if @notification_count && @notification_count > 0 %><li><a href="<%= notifications_path %>"><span class="badge badge-important"><%= @notification_count %></span></a></li>
-    <li class="divider-vertical"></li><% end %>
   <% else %>
     <li><%= link_to 'Sign Up', new_character_registration_url %></li>
     <li><%= link_to 'Sign In', new_character_session_url %></li>
