@@ -7,6 +7,10 @@ class NotificationsController < ApplicationController
 
   def dismiss
     @notification = Notification.find(params[:id])
+    unless @notification.character == current_character
+      flash[:error] = "You are not authorized to access that page."
+      return redirect_to root_url
+    end
     @notification.read_at = Time.zone.now
     @notification.save
     redirect_to notifications_url
