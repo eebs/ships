@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
 
   def authenticate_admin!
     unless character_signed_in? && current_character.admin?
-      flash[:error] = "You are not authorized to access this page."
+      flash[:error] = "You are not authorized to access that page."
       redirect_to root_url
     end
   end
