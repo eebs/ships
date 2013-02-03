@@ -1,3 +1,5 @@
+<% @available = rand(0..1) == 1 %>
+
 <div class="home-ship row">
   <div class="span3 offset1">
     <div class="media">
@@ -24,9 +26,9 @@
           unless run.next_due.empty?
             due = Time.zone.parse(run.next_due)
             if due.future?
-                "Current job finishes " + distance_of_time_in_words_to_now(due) + " from now"
+                "Current task finishes " + distance_of_time_in_words_to_now(due) + " from now"
             else
-                "Current job finished " + time_ago_in_words(due) + " ago"
+                "Current task finished " + time_ago_in_words(due) + " ago"
             end
           end
           %>
@@ -37,6 +39,34 @@
       </div>
     </div>
   </div>
-  <div class="span3">
+  <div class="span4">
+    <div class="media">
+      <span class="pull-left run-status-indicator" style="background-color: <%= @available ? '#00FF00' : '#FF0000' %>">
+      </span>
+      <div class="media-body">
+        <h4 class="media-heading"><%= @available ? 'Available' : 'Booked' %></h4>
+        <div class="ship-light-text ship-eta">
+          <%=
+          eta = rand(1..10).days.from_now
+          if eta.future?
+                "- finishes in " + distance_of_time_in_words_to_now(eta)
+            else
+                "- finished " + time_ago_in_words(eta) + " ago"
+            end
+            %>
+        </div>
+        <div>
+          <% if character_signed_in? %>
+            <%= 
+            if @available
+              link_to 'Reserve', '#', class: 'ship-reserve-button btn btn-mini btn-primary'
+            end 
+            %>
+          <% else %>
+            <%= link_to 'Sign in', new_character_session_path %> to reserve
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

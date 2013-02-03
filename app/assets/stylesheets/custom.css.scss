@@ -217,10 +217,18 @@ h4.media-heading {
 }
 
 .run-status-indicator {
-  width: 10px;
+  width: 8px;
   height: 64px;
 }
 
 .pull-left.run-status-indicator {
   margin-right: 6px;
+}
+
+.ship-eta {
+  display: inline;
+}
+
+.ship-reserve-button {
+  margin-top: 5px;
 }
