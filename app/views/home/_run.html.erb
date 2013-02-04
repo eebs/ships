@@ -4,8 +4,13 @@
   <div class="span3 offset1">
     <div class="media">
       <span class="pull-left">
-        <% @type_id = run.ship.name == 'Archon' ? '23757' : '23911' %>
-        <%= image_tag "http://image.eveonline.com/InventoryType/#{@type_id}_64.png", :class => 'media-object' %>
+        <%=
+        if run.ship.type_id
+          image_tag "http://image.eveonline.com/InventoryType/#{run.ship.type_id}_64.png", :class => 'media-object'
+        else
+          image_tag "placeholder.jpg", :height => 64, :width => 64, :class => 'media-object'
+        end
+        %>
       </span>
       <div class="media-body">
         <h4 class="media-heading"><%= run.ship.name %></h4> <h4 class="media-heading ship-light-text">#<%= run.ship_number %></h4>
