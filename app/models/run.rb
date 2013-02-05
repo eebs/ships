@@ -4,6 +4,8 @@ class Run < ActiveRecord::Base
   belongs_to :ship
   belongs_to :status
 
+  has_one :reservation
+
   # Ensure associations exist
   validates :status_id, :presence => true
   validates :ship_id,   :presence => true

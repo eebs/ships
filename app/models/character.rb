@@ -20,6 +20,8 @@ class Character < ActiveRecord::Base
   has_many :notifications
   has_many :messages, :through => :notifications
 
+  has_many :reservations
+
   def notify(message)
     if message.instance_of? Message
       messages << message
