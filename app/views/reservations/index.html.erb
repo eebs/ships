@@ -1,3 +1,5 @@
+<h3>Your Reservations</h3><hr/>
+
 <% if @reservations.present? %>
   <%= render :partial => "reservations/run", :collection => @runs  %>
 <% else %>
