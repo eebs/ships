@@ -1,4 +1,9 @@
 Ships::Application.routes.draw do
+  get "reservations" => "reservations#index"
+  get "reservations/:id" => "reservations#show", :as => :reservation
+  post "reservations" => "reservations#create"
+  delete "reservations/:id" => "reservations#destroy"
+
   devise_for :characters, :controllers => { :registrations => "characters/registrations" }
   resources :characters
 
