@@ -1,2 +1,13 @@
-<h1>Reservations#show</h1>
-<p>Find me in app/views/reservations/show.html.erb</p>
+<div class="home-ship row">
+  <div class="span10 offset1">
+    <div class="media">
+      <span class="pull-left thumbnail">
+        <%= image_tag "http://image.eveonline.com/Render/#{@reservation.run.ship.type_id}_256.png", :class => 'media-object' %>
+      </span>
+      <div class="media-body">
+        <h3 class="media-heading"><%= @reservation.run.ship.name %></h3> <h3 class="media-heading ship-light-text">#<%= @reservation.run.ship_number %></h3>
+        <div class="ship-light-text">Reserved <%= time_ago_in_words(@reservation.created_at) %> ago</div>
+      </div>
+    </div>
+  </div>
+</div>

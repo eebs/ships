@@ -1,5 +1,6 @@
 <ul class="nav pull-right">
   <li class="<%= is_active?("home") %>"><%= link_to "Home",    root_path %></li>
+  <li class="<%= is_active?("reservations") %>"><%= link_to "Reservations", reservations_path %></li>
   <% if character_signed_in? %>
     <% if character_signed_in? && current_character.admin? %>
     <li class="<%= is_active?("runs") %>"><%= link_to "Runs",   runs_path %></li>
