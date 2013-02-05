@@ -1,7 +1,7 @@
 <ul class="nav pull-right">
   <% if character_signed_in? %>
     <% if @notification_count %>
-      <li>
+      <li class="<%= is_active?("notifications") %>">
         <a href="<%= notifications_path %>"><span class="badge <%= if @notification_count > 0 then 'badge-important' end %>"><%= @notification_count %></span></a>
       </li>
     <% end %>
