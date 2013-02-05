@@ -64,7 +64,7 @@
             <% if !run.reservation %>
               <%= link_to 'Reserve', reservations_path(:id => run.id), :method => :post, :class => 'ship-reserve-button btn btn-mini btn-primary' %>
             <% elsif run.reservation.character == current_character  %>
-              <div class="ship-light-text">You reserved this ship <%= time_ago_in_words(run.reservation.created_at) %> ago.</div>
+              <div class="ship-light-text">Reserved <%= time_ago_in_words(run.reservation.created_at) %> ago.</div>
               <div class="ship-light-text"><%= link_to "View Reservation", reservation_path(run.reservation) %></div>
             <% end %>
           <% else %>
