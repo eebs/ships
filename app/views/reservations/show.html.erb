@@ -1,12 +1,47 @@
 <div class="home-ship row">
-  <div class="span10 offset1">
+  <div class="span8 offset2">
     <div class="media">
       <span class="pull-left thumbnail">
         <%= image_tag "http://image.eveonline.com/Render/#{@reservation.run.ship.type_id}_256.png", :class => 'media-object' %>
       </span>
       <div class="media-body">
         <h3 class="media-heading"><%= @reservation.run.ship.name %></h3> <h3 class="media-heading ship-light-text">#<%= @reservation.run.ship_number %></h3>
-        <div class="ship-light-text">Reserved <%= time_ago_in_words(@reservation.created_at) %> ago</div>
+        <div class="reserved-ago-container">
+          <span class="reserved-ago ship-light-text">Reserved <%= time_ago_in_words(@reservation.created_at) %> ago</span>
+        </div>
+        <div class="reservation-info">
+          <% if @reservation.run.start_date.present? %>
+            <div class="ship-light-text">Started: <%= Time.zone.parse(@reservation.run.start_date).to_s(:month_date) %></div>
+          <% end %>
+          <div class="ship-light-text">
+            Last updated <%= time_ago_in_words(@reservation.run.updated_at) + ' ago' %>
+          </div>
+        </div>
+        <div class="media">
+          <span class="pull-left run-status-indicator" style="background-color: <%= @reservation.run.status.color %>">
+          </span>
+          <div class="media-body">
+            <h4 class="media-heading"><%= @reservation.run.status.name %></h4>
+            <div class="ship-light-text">
+              <%=
+              unless @reservation.run.next_due.empty?
+                due = Time.zone.parse(@reservation.run.next_due)
+                if due.future?
+                    "Current task finishes " + distance_of_time_in_words_to_now(due) + " from now"
+                else
+                    "Current task finished " + time_ago_in_words(due) + " ago"
+                end
+              end
+              %>
+            </div>
+            <div class="ship-light-text">
+              Last updated <%= time_ago_in_words(@reservation.run.updated_at) + ' ago' %>
+            </div>
+          </div>
+        </div>
+        <div class="reservation-finishes">
+          <h4>Finishes in approx: <%= distance_of_time_in_words_to_now(rand(1..10).days.from_now) %></h4>
+        </div>
       </div>
     </div>
   </div>
