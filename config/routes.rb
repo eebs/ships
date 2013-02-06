@@ -18,6 +18,7 @@ Ships::Application.routes.draw do
   get "notifications/" => "notifications#index"
   get "notifications/index"
   get "notifications/dismiss"
+  get "notifications/dismiss_all"
 
   get "api/orders"
   get "api/" => "api#orders"

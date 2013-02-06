@@ -1,4 +1,4 @@
-<h3>Notifications</h3><hr/>
+<h3 class="notifications-title-inline">Notifications</h3><%= link_to 'Dismiss All', notifications_dismiss_all_path, class: 'dismiss-all-button btn btn-mini' %><hr/>
 
 <% unless @notifications.empty? %>
   <ol id="notifications" class="unstyled">

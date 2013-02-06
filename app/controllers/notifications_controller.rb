@@ -15,4 +15,12 @@ class NotificationsController < ApplicationController
     @notification.save
     redirect_to notifications_url
   end
+
+  def dismiss_all
+    current_character.notifications.where(:read_at => nil).each do |notification|
+      notification.read_at = Time.zone.now
+      notification.save
+    end
+    redirect_to notifications_url
+  end
 end 
