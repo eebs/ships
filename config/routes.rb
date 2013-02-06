@@ -5,7 +5,9 @@ Ships::Application.routes.draw do
   delete "reservations/:id" => "reservations#destroy"
 
   devise_for :characters, :controllers => { :registrations => "characters/registrations" }
-  get "characters" => "characters#index"
+  scope "/admin" do
+    get "characters" => "characters#index"
+  end
 
   get "notifications/" => "notifications#index"
   get "notifications/index"
