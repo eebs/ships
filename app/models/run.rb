@@ -25,6 +25,10 @@ class Run < ActiveRecord::Base
     end
   end
 
+  def display_name
+    "#{ship.name} #{ship_number}"
+  end
+
   def self.sold_ordered
     if sold_status = Status.find_by_name('Sold')
       where('status_id = ?', sold_status.id).order('sell_date DESC')
@@ -39,6 +43,10 @@ class Run < ActiveRecord::Base
     else
       []
     end
+  end
+
+  def self.not_sold
+    where('status_id != ?', Status.sold.id)
   end
 
   def self.chart_data(start = 2.month.ago)

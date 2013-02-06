@@ -3,4 +3,6 @@ class Reservation < ActiveRecord::Base
 
   belongs_to :character
   belongs_to :run
+
+  validates_uniqueness_of :run_id
 end

@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @ships = Run.where('status_id != ?', Status.sold.id)
+    @ships = Run.not_sold
   end
 
 
