@@ -16,7 +16,7 @@ class Admin::ReservationsController < ApplicationController
 
   def create
       if @reservation.save
-        redirect_to admin_reservation_path @reservation, notice: 'Reservation was successfully created.'
+        redirect_to admin_reservation_path(@reservation), notice: 'Reservation was successfully created.'
       else
         render action: "new"
       end
@@ -24,7 +24,7 @@ class Admin::ReservationsController < ApplicationController
 
   def update
     if @reservation.update_attributes(params[:reservation])
-      redirect_to admin_reservation_path @reservation, notice: 'Reservation was successfully updated.'
+      redirect_to admin_reservation_path(@reservation), notice: 'Reservation was successfully updated.'
     else
       render action: "edit"
     end
