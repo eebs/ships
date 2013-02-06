@@ -21,8 +21,6 @@ Ships::Application.routes.draw do
   get "report/price"
   get "report/" => "report#price"
 
-  get "home/index"
-
   scope "/admin" do
     resources :statuses, :ships, :runs
   end
