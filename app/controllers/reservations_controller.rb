@@ -10,7 +10,7 @@ class ReservationsController < ApplicationController
 
   def show
     @reservation = Reservation.find(params[:id])
-    unless @reservation.character == current_character
+    unless (@reservation.character == current_character) || current_character.admin?
       flash[:error] = "You are not authorized to view that reservation."
       return redirect_to root_url
     end
