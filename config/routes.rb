@@ -1,4 +1,9 @@
 Ships::Application.routes.draw do
+
+  namespace :admin do
+    resources :reservations
+  end
+
   get "reservations" => "reservations#index"
   get "reservations/:id" => "reservations#show", :as => :reservation
   post "reservations" => "reservations#create"
