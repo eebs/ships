@@ -1,0 +1,37 @@
+<h3>New Reservation</h3><hr/>
+
+<div class="row">
+  <div class="span8 offset2">
+    <div class="alert">
+      <strong>Warning!</strong> You are reserving a ship. Please ensure you are able to pay for this item.
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="span4 offset2">
+    <div class="media">
+      <span class="pull-left">
+        <%=
+        if @run.ship.type_id
+          image_tag "http://image.eveonline.com/InventoryType/#{@run.ship.type_id}_64.png", :class => 'media-object'
+        else
+          image_tag "placeholder.jpg", :height => 64, :width => 64, :class => 'media-object'
+        end
+        %>
+      </span>
+      <div class="media-body">
+        <h4 class="media-heading"><%= @run.ship.name %></h4> <h4 class="media-heading ship-light-text">#<%= @run.ship_number %></h4>
+        <% if @run.start_date.present? %>
+          <div class="ship-light-text">Started: <%= Time.zone.parse(@run.start_date).to_s(:month_date) %></div>
+        <% end %>
+        <div class="ship-light-text">
+          Finishes in approx: <%= distance_of_time_in_words_to_now(rand(1..10).days.from_now) %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="span4 reservation-confirmation">
+    <%= link_to 'Reserve', reservations_path(:id => @run), :method => :post, :class => 'ship-reserve-button btn btn-primary' %>
+    <%= link_to 'Cancel', :back, :class => 'ship-reserve-button btn btn-primary' %>
+  </div>
+</div>
