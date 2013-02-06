@@ -15,6 +15,11 @@ class Admin::ReservationsController < ApplicationController
   end
 
   def create
+      if @reservation.save
+        redirect_to admin_reservation_path @reservation, notice: 'Reservation was successfully created.'
+      else
+        render action: "new"
+      end
   end
 
   def update
@@ -26,5 +31,8 @@ class Admin::ReservationsController < ApplicationController
   end
 
   def destroy
+    @reservation.destroy
+
+    redirect_to admin_reservations_url
   end
 end
