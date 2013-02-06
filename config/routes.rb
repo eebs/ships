@@ -21,11 +21,9 @@ Ships::Application.routes.draw do
 
   get "home/index"
 
-  resources :statuses
-
-  resources :ships
-
-  resources :runs
+  scope "/admin" do
+    resources :statuses, :ships, :runs
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
