@@ -7,7 +7,7 @@
         <th>Status</th>
         <th>Sell Price</th>
         <th>Start Date</th>
-        <th>Sell Date</th>
+        <th>Finish Date</th>
         <th>Notes</th>
         <% if can? :manage, Run %>
         <th>Modify</th>
@@ -32,13 +32,13 @@
         <td><%= run.status.name %></td>
         <td><%= number_to_currency(run.sell_price) if run.sell_price %></td>
         <td><%= 
-            unless run.start_date.empty?
+            if run.start_date.present?
                 Time.zone.parse(run.start_date).to_formatted_s(:short)
             end
         %></td>
         <td><%= 
-            unless run.sell_date.empty?
-                Time.zone.parse(run.sell_date).to_formatted_s(:short)
+            if run.finish_date.present?
+                Time.zone.parse(run.finish_date).to_formatted_s(:short)
             end
         %></td>
         <td><%= run.notes %></td>

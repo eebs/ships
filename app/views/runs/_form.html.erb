@@ -9,6 +9,8 @@
   <%= f.input :sell_price %>
   <%= f.input :start_date %>
   <%= f.input :sell_date %>
+  <%= f.input :finish_date %>
+  <div id="finish-time-hint"><%= render 'runs/finish_dates' %></div>
   <%= f.input :notes, :input_html => { :rows => 3 } %>
   <%= f.button :submit, :class => 'btn btn-primary btn-large' %>
 <% end %>

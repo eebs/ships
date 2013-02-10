@@ -51,11 +51,15 @@
         <h4 class="media-heading"><%= run.reservation ? 'Reserved' : 'Available' %></h4>
         <div class="ship-light-text ship-eta">
           <%=
-          eta = rand(1..10).days.from_now
-          if eta.future?
-                "- finishes in " + distance_of_time_in_words_to_now(eta)
+            if run.finish_date?
+              eta = Time.zone.parse(run.finish_date)
+              if eta
+                  "- finishes in " + distance_of_time_in_words_to_now(eta)
+              else
+                  "- finished " + time_ago_in_words(eta) + " ago"
+              end
             else
-                "- finished " + time_ago_in_words(eta) + " ago"
+              "- finish time unknown"
             end
             %>
         </div>

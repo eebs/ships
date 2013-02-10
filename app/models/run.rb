@@ -1,5 +1,5 @@
 class Run < ActiveRecord::Base
-  attr_accessible :next_due, :notes, :sell_date, :sell_price, :ship_number, :start_date, :status_id, :ship_id
+  attr_accessible :next_due, :notes, :sell_date, :sell_price, :ship_number, :start_date, :status_id, :ship_id, :finish_date
 
   belongs_to :ship
   belongs_to :status
@@ -19,7 +19,7 @@ class Run < ActiveRecord::Base
   validates :sell_price, :numericality => { :greater_than => 0 }, :allow_blank => true
 
   # Ensure we have a valid date
-  validates_each :next_due, :sell_date, :start_date do |record, attr, value|
+  validates_each :next_due, :sell_date, :start_date, :finish_date do |record, attr, value|
     if value.present? && !value.is_a?(ActiveSupport::TimeWithZone)
       record.errors.add(attr, 'must be a valid date')
     end
