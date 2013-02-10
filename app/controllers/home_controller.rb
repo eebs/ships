@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @ships = Run.not_sold
+    @ships = Run.not_sold.joins(:ship).order('ships.name')
   end
 
 
