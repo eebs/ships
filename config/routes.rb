@@ -13,6 +13,7 @@ Ships::Application.routes.draw do
   devise_for :characters, :controllers => { :registrations => "characters/registrations" }
   scope "/admin" do
     get "characters" => "characters#index"
+    get "characters/:id" => "characters#show", :as => :character
   end
 
   get "notifications/" => "notifications#index"
