@@ -43,7 +43,7 @@
           </div>
         </div>
         <div class="reservation-finishes">
-          <h4>Finishes in approx: <%= distance_of_time_in_words_to_now(rand(1..10).days.from_now) %></h4>
+          <h4>Finishes in approx: <%= distance_of_time_in_words_to_now(@reservation.run.finish_date) %></h4>
         </div>
       </div>
     </div>
