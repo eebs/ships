@@ -9,9 +9,9 @@
         <%= character_image_tag current_character.characterid %> <span class="registration_character_name"><%= current_character.name %></span>
       </div>
 
-      <%= f.input :password, :input_html => { :class => 'close-hint'} %>
-      <%= f.input :password_confirmation %>
-      <%= f.input :current_password, :input_html => { :class => 'close-hint' } %>
+      <%= f.input :password, :label => 'New Password', :input_html => { :class => 'close-hint'} %>
+      <%= f.input :password_confirmation, :label => 'New Password Confirmation' %>
+      <%= f.input :current_password, :label => 'Current Password', :input_html => { :class => 'close-hint' } %>
 
       <%= f.error :base %>
       <%= f.submit 'Update', :class => 'btn btn-primary btn-large' %>
