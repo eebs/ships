@@ -3,7 +3,7 @@
     <div class="media">
       <span class="pull-left">
         <%=
-        if run.ship.type_id
+        if run.ship.type_id?
           image_tag "http://image.eveonline.com/InventoryType/#{run.ship.type_id}_64.png", :class => 'media-object'
         else
           image_tag "placeholder.jpg", :height => 64, :width => 64, :class => 'media-object'

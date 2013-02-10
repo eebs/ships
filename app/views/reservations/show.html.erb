@@ -2,7 +2,13 @@
   <div class="span8 offset2">
     <div class="media">
       <span class="pull-left thumbnail">
-        <%= image_tag "http://image.eveonline.com/Render/#{@reservation.run.ship.type_id}_256.png", :class => 'media-object' %>
+        <%=
+        if @reservation.run.ship.type_id?
+          image_tag "http://image.eveonline.com/Render/#{@reservation.run.ship.type_id}_256.png", :class => 'media-object'
+        else
+          image_tag "placeholder.jpg", :height => 256, :width => 256, :class => 'media-object'
+        end
+        %>
       </span>
       <div class="media-body">
         <h3 class="media-heading"><%= @reservation.run.ship.name %></h3> <h3 class="media-heading ship-light-text">#<%= @reservation.run.ship_number %></h3>
