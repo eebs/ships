@@ -13,6 +13,10 @@ group :development, :test do
     gem 'spork'
 end
 
+group :development do
+  gem 'better_errors'
+end
+
 group :test do
   gem 'capybara'
   gem 'rb-fsevent', :require => false
