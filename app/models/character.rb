@@ -8,7 +8,6 @@ class Character < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :password, :password_confirmation, :remember_me
   attr_accessible :name, :characterid
-  attr_accessible :admin
 
   validates_presence_of     :name
   validates_uniqueness_of   :name, :case_sensitive => false, :allow_blank => true, :if => :name_changed?
