@@ -2,28 +2,19 @@
   <div class="span4 offset4">
     <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
-    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
-      <%= devise_error_messages! %>
+    <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => 'form-vertical', :method => :put }) do |f| %>
+      <%= f.error_notification %>
 
       <div class="registration_character">
         <%= character_image_tag current_character.characterid %> <span class="registration_character_name"><%= current_character.name %></span>
       </div>
 
-      <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i>
-      <%= f.password_field :password, :autocomplete => "off" %></div>
+      <%= f.input :password, :input_html => { :class => 'close-hint'} %>
+      <%= f.input :password_confirmation %>
+      <%= f.input :current_password, :input_html => { :class => 'close-hint' } %>
 
-      <div><%= f.label :password_confirmation %>
-      <%= f.password_field :password_confirmation %></div>
-
-      <div><%= f.label :current_password %> <i>(to confirm your changes)</i>
-      <%= f.password_field :current_password %></div>
-
-      <div><%= f.submit "Update", :class => 'btn btn-primary btn-large' %></div>
+      <%= f.error :base %>
+      <%= f.submit 'Update', :class => 'btn btn-primary btn-large' %>
     <% end %>
-
-    <h3>Cancel My Account</h3>
-
-    <p><%= link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %>.</p>
-
   </div>
 </div>
