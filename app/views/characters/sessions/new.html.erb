@@ -11,6 +11,7 @@
         <%= f.input :remember_me, :label => false, inline_label: 'Remember me', :as => :boolean %>
       <% end %>
 
+      <%= f.error :base %>
       <%= f.submit 'Sign In', :class => 'btn btn-primary btn-large' %>
     <% end %>
 
