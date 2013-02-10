@@ -53,7 +53,7 @@
           <%=
             if run.finish_date?
               eta = Time.zone.parse(run.finish_date)
-              if eta
+              if eta.future?
                   "- finishes in " + distance_of_time_in_words_to_now(eta)
               else
                   "- finished " + time_ago_in_words(eta) + " ago"
