@@ -70,3 +70,5 @@ gem 'eve', :git => 'git@github.com:sinisterchipmunk/eve.git'
 
 gem 'devise'
 gem 'cancan'
+
+gem 'simple_form'
