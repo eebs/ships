@@ -45,7 +45,7 @@
   </div>
   <div class="span4">
     <div class="media">
-      <span class="pull-left run-status-indicator" style="background-color: <%= run.reservation ? '#FF0000' : '#00FF00' %>">
+      <span class="pull-left run-status-indicator" style="background-color: <%= run.status_color %>">
       </span>
       <div class="media-body">
         <h4 class="media-heading"><%= run.reservation ? 'Reserved' : 'Available' %></h4>

@@ -12,4 +12,8 @@ class Status < ActiveRecord::Base
   def self.sold
     find_by_name!('Sold')
   end
+
+  def self.on_market
+    find_by_name!('On Market')
+  end
 end
