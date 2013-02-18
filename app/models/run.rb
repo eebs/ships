@@ -37,6 +37,14 @@ class Run < ActiveRecord::Base
     end
   end
 
+  def status_header
+    if reservation
+      'Reserved'
+    else
+       (status == Status.on_market) ?  'Available Now' : 'In Progress'
+    end
+  end
+
   def self.sold_ordered
     if sold_status = Status.find_by_name('Sold')
       where('status_id = ?', sold_status.id).order('sell_date DESC')

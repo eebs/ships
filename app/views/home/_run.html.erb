@@ -48,7 +48,7 @@
       <span class="pull-left run-status-indicator" style="background-color: <%= run.status_color %>">
       </span>
       <div class="media-body">
-        <h4 class="media-heading"><%= run.reservation ? 'Reserved' : 'Available' %></h4>
+        <h4 class="media-heading"><%= run.status_header %></h4>
         <div class="ship-light-text ship-eta">
           <%=
             if run.finish_date?
