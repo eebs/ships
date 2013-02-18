@@ -30,7 +30,7 @@
           unless run.next_due.empty?
             due = Time.zone.parse(run.next_due)
             if due.future?
-                "Current task finishes " + distance_of_time_in_words_to_now(due) + " from now"
+                "Current task finishes in " + distance_of_time_in_words_to_now(due)
             else
                 "Current task finished " + time_ago_in_words(due) + " ago"
             end
