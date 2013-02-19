@@ -13,7 +13,7 @@ class ApiController < ApplicationController
         entry[:seller] = @api.char_name(order.charID)
         entry[:volRemaining] = order.volRemaining
         entry[:duration] = Time.zone.parse(order.issued) + order.duration.to_i.days
-        @open_orders_hash[order.typeID] = entry
+        @open_orders_hash[order.orderID] = entry
       end
     end
 
