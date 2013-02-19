@@ -2,7 +2,7 @@ class NotificationsController < ApplicationController
   before_filter :authenticate_character!
 
   def index
-    @notifications = current_character.notifications.find(:all, :order => 'created_at DESC, id')
+    @notifications = current_character.notifications.includes(:message).find(:all, :order => 'created_at DESC, id')
   end
 
   def dismiss

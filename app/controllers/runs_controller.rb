@@ -5,7 +5,7 @@ class RunsController < ApplicationController
   # GET /runs
   # GET /runs.json
   def index
-    @active = Run.active
+    @active = Run.active.includes([:ship, :status])
     @inactive = Run.inactive
   end
 
