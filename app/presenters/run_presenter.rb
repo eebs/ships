@@ -10,6 +10,18 @@ class RunPresenter < BasePresenter
     content_tag(:h4, run.ship.name, :class => 'media-heading') + content_tag(:h4, " ##{run.ship_number}", :class => 'media-heading ship-light-text')
   end
 
+  def sell_price
+    number_to_currency(run.sell_price) || 'Price Unavailable'
+  end
+
+  def started
+    "Started: " + Time.zone.parse(run.start_date).to_s(:month_date) if run.start_date.present?
+  end
+
+  def status
+    run.status.name
+  end
+
 private
 
   def ship_icon

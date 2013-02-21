@@ -7,19 +7,16 @@
         </span>
         <div class="media-body">
           <%= run_presenter.title %>
-          <div class="ship-light-text"><%= number_to_currency(run.sell_price) || 'Price Unavailable' %></div>
-          <% if run.start_date.present? %>
-            <div class="ship-light-text">Started: <%= Time.zone.parse(run.start_date).to_s(:month_date) %></div>
-          <% end %>
+          <div class="ship-light-text"><%= run_presenter.sell_price %></div>
+          <div class="ship-light-text"><%= run_presenter.started %></div>
         </div>
       </div>
     </div>
     <div class="span4">
       <div class="media">
-        <span class="pull-left run-status-indicator" style="background-color: <%= run.status.color %>">
-        </span>
+        <span class="pull-left run-status-indicator" style="background-color: <%= run.status.color %>"></span>
         <div class="media-body">
-          <h4 class="media-heading"><%= run.status.name %></h4>
+          <h4 class="media-heading"><%= run_presenter.status %></h4>
           <div class="ship-light-text">
             <%=
             unless run.next_due.empty?
