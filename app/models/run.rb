@@ -29,22 +29,6 @@ class Run < ActiveRecord::Base
     "#{ship.name} #{ship_number}"
   end
 
-  def status_color
-    if reservation
-      '#FF0000'
-    else
-       (status == Status.on_market) ?  '#00FF00' : '#0000FF'
-    end
-  end
-
-  def status_header
-    if reservation
-      'Reserved'
-    else
-       (status == Status.on_market) ?  'Available' : 'In Progress'
-    end
-  end
-
   def self.sold_ordered
     if sold_status = Status.find_by_name('Sold')
       where('status_id = ?', sold_status.id).order('sell_date DESC')

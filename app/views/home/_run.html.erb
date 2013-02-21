@@ -18,18 +18,16 @@
         <div class="media-body">
           <h4 class="media-heading"><%= run_presenter.status %></h4>
           <div class="ship-light-text"><%= run_presenter.current_task_time %></div>
-          <div class="ship-light-text">
-            Last updated <%= time_ago_in_words(run.updated_at) + ' ago' %>
-          </div>
+          <div class="ship-light-text"><%= run_presenter.last_updated %></div>
         </div>
       </div>
     </div>
     <div class="span4">
       <div class="media">
-        <span class="pull-left run-status-indicator" style="background-color: <%= run.status_color %>">
+        <span class="pull-left run-status-indicator" style="background-color: <%= run_presenter.status_color %>">
         </span>
         <div class="media-body">
-          <h4 class="media-heading"><%= run.status_header %></h4>
+          <h4 class="media-heading"><%= run_presenter.status_header %></h4>
           <div class="ship-light-text ship-eta">
             <%=
               if run.finish_date?

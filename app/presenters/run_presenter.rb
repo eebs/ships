@@ -33,6 +33,18 @@ class RunPresenter < BasePresenter
     end
   end
 
+  def last_updated
+    'Last updated ' + time_ago_in_words(run.updated_at) + ' ago'
+  end
+
+  def status_color
+    status_switcher '#FF0000', '#00FF00', '#0000FF'
+  end
+
+  def status_header
+    status_switcher 'Reserved', 'Available', 'In Progress'
+  end
+
 private
 
   def ship_icon
@@ -46,5 +58,13 @@ private
   def icon_image(src, options = {})
     options.merge! :class => 'media-object'
     image_tag src, options
+  end
+
+  def status_switcher(has_reservation, on_market, not_on_market)
+    if run.reservation
+      has_reservation
+    else
+       (run.status == Status.on_market) ?  on_market : not_on_market
+    end
   end
 end
