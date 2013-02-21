@@ -6,6 +6,10 @@ class RunPresenter < BasePresenter
     run.ship.type_id? ? ship_icon : placeholder_icon
   end
 
+  def title
+    content_tag(:h4, run.ship.name, :class => 'media-heading') + content_tag(:h4, " ##{run.ship_number}", :class => 'media-heading ship-light-text')
+  end
+
 private
 
   def ship_icon
