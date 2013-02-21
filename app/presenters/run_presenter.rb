@@ -22,6 +22,17 @@ class RunPresenter < BasePresenter
     run.status.name
   end
 
+  def current_task_time
+    unless run.next_due.empty?
+      due = Time.zone.parse(run.next_due)
+      if due.future?
+          "Current task finishes in " + distance_of_time_in_words_to_now(due)
+      else
+          "Current task finished " + time_ago_in_words(due) + " ago"
+      end
+    end
+  end
+
 private
 
   def ship_icon
