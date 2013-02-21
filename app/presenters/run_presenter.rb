@@ -3,11 +3,7 @@ class RunPresenter < BasePresenter
   #delegate :username, to: :user
 
   def icon
-    if run.ship.type_id?
-      ship_icon
-    else
-      placeholder_icon
-    end
+    run.ship.type_id? ? ship_icon : placeholder_icon
   end
 
 private
