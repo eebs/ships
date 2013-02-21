@@ -41,9 +41,7 @@
                 <div class="ship-light-text"><%= link_to "View Reservation", reservation_path(run.reservation) %></div>
               <% end %>
             <% else %>
-              <% unless run.reservation %>
-                <%= link_to 'Sign in', new_character_session_path %> to reserve
-              <% end %>
+              <%= run_presenter.sign_in_link %>
             <% end %>
           </div>
         </div>

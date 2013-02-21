@@ -55,6 +55,10 @@ class RunPresenter < BasePresenter
     end
   end
 
+  def sign_in_link
+    link_to('Sign in', new_character_session_path) + ' to reserve' unless run.reservation
+  end
+
 private
 
   def ship_icon
