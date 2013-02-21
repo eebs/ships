@@ -45,6 +45,16 @@ class RunPresenter < BasePresenter
     status_switcher 'Reserved', 'Available', 'In Progress'
   end
 
+  def finishes_in
+    return "- finish time unknown" unless run.eta
+    
+    if run.eta.future?
+        "- finishes in " + distance_of_time_in_words_to_now(run.eta)
+    else
+        "- finished " + time_ago_in_words(run.eta) + " ago"
+    end
+  end
+
 private
 
   def ship_icon

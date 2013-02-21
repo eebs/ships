@@ -28,20 +28,7 @@
         </span>
         <div class="media-body">
           <h4 class="media-heading"><%= run_presenter.status_header %></h4>
-          <div class="ship-light-text ship-eta">
-            <%=
-              if run.finish_date?
-                eta = Time.zone.parse(run.finish_date)
-                if eta.future?
-                    "- finishes in " + distance_of_time_in_words_to_now(eta)
-                else
-                    "- finished " + time_ago_in_words(eta) + " ago"
-                end
-              else
-                "- finish time unknown"
-              end
-              %>
-          </div>
+          <div class="ship-light-text ship-eta"><%= run_presenter.finishes_in %></div>
           <div>
             <% if character_signed_in? %>
               <% if !run.reservation %>
