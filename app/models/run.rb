@@ -41,7 +41,7 @@ class Run < ActiveRecord::Base
     if reservation
       'Reserved'
     else
-       (status == Status.on_market) ?  'Available Now' : 'In Progress'
+       (status == Status.on_market) ?  'Available' : 'In Progress'
     end
   end
 
