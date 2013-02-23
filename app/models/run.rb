@@ -88,4 +88,8 @@ class Run < ActiveRecord::Base
     sold = Status.find_by_name('Sold')
     where(:status_id => sold.id).order('sell_date DESC')
   end
+
+  def self.dollar_amount_sold
+    where(:status_id => Status.sold.id).sum(:sell_price)
+  end
 end
