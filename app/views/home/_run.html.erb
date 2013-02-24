@@ -1,0 +1,37 @@
+<% present run do |run_presenter| %>
+  <div class="home-ship row">
+    <div class="span3 offset1">
+      <div class="media">
+        <span class="pull-left">
+          <%= run_presenter.icon %>
+        </span>
+        <div class="media-body">
+          <%= run_presenter.title %>
+          <div class="ship-light-text"><%= run_presenter.sell_price %></div>
+          <div class="ship-light-text"><%= run_presenter.started %></div>
+        </div>
+      </div>
+    </div>
+    <div class="span4">
+      <div class="media">
+        <span class="pull-left run-status-indicator" style="background-color: <%= run.status.color %>"></span>
+        <div class="media-body">
+          <h4 class="media-heading"><%= run_presenter.status %></h4>
+          <div class="ship-light-text"><%= run_presenter.current_task_time %></div>
+          <div class="ship-light-text"><%= run_presenter.last_updated %></div>
+        </div>
+      </div>
+    </div>
+    <div class="span4">
+      <div class="media">
+        <span class="pull-left run-status-indicator" style="background-color: <%= run_presenter.status_color %>">
+        </span>
+        <div class="media-body">
+          <h4 class="media-heading"><%= run_presenter.status_header %></h4>
+          <div class="ship-light-text ship-eta"><%= run_presenter.finishes_in %></div>
+          <div><%= run_presenter.status_body %></div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

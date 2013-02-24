@@ -13,6 +13,12 @@ group :development, :test do
     gem 'spork'
 end
 
+group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'bullet'
+end
+
 group :test do
   gem 'capybara'
   gem 'rb-fsevent', :require => false
@@ -66,3 +72,5 @@ gem 'eve', :git => 'git@github.com:sinisterchipmunk/eve.git'
 
 gem 'devise'
 gem 'cancan'
+
+gem 'simple_form'

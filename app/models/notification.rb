@@ -3,4 +3,13 @@ class Notification < ActiveRecord::Base
 
   belongs_to :character
   belongs_to :message
+
+  def self.send_to_admins(message)
+    if message.instance_of? Message
+      users = Character.where(:admin => true)
+      users.each do |user|
+        user.notify(message)
+      end
+    end
+  end
 end

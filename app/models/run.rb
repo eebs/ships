@@ -1,8 +1,10 @@
 class Run < ActiveRecord::Base
-  attr_accessible :next_due, :notes, :sell_date, :sell_price, :ship_number, :start_date, :status_id, :ship_id
+  attr_accessible :next_due, :notes, :sell_date, :sell_price, :ship_number, :start_date, :status_id, :ship_id, :finish_date
 
   belongs_to :ship
   belongs_to :status
+
+  has_one :reservation
 
   # Ensure associations exist
   validates :status_id, :presence => true
@@ -17,10 +19,22 @@ class Run < ActiveRecord::Base
   validates :sell_price, :numericality => { :greater_than => 0 }, :allow_blank => true
 
   # Ensure we have a valid date
-  validates_each :next_due, :sell_date, :start_date do |record, attr, value|
+  validates_each :next_due, :sell_date, :start_date, :finish_date do |record, attr, value|
     if value.present? && !value.is_a?(ActiveSupport::TimeWithZone)
       record.errors.add(attr, 'must be a valid date')
     end
+  end
+
+  def display_name
+    "#{ship.name} #{ship_number}"
+  end
+
+  def eta
+    Time.zone.parse(finish_date) if finish_date? 
+  end
+
+  def reservation?
+    !!reservation
   end
 
   def self.sold_ordered
@@ -37,6 +51,10 @@ class Run < ActiveRecord::Base
     else
       []
     end
+  end
+
+  def self.not_sold
+    where('status_id != ?', Status.sold.id)
   end
 
   def self.chart_data(start = 2.month.ago)
@@ -73,5 +91,9 @@ class Run < ActiveRecord::Base
   def self.inactive
     sold = Status.find_by_name('Sold')
     where(:status_id => sold.id).order('sell_date DESC')
+  end
+
+  def self.dollar_amount_sold
+    where(:status_id => Status.sold.id).sum(:sell_price)
   end
 end

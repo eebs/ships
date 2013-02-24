@@ -1,10 +1,25 @@
 Ships::Application.routes.draw do
+
+  namespace :admin do
+    resources :reservations
+  end
+
+  get "reservations" => "reservations#index"
+  get "reservations/new" => "reservations#new", :as => :new_reservation
+  get "reservations/:id" => "reservations#show", :as => :reservation
+  post "reservations" => "reservations#create"
+  delete "reservations/:id" => "reservations#destroy"
+
   devise_for :characters, :controllers => { :registrations => "characters/registrations" }
-  resources :characters
+  scope "/admin" do
+    get "characters" => "characters#index"
+    get "characters/:id" => "characters#show", :as => :character
+  end
 
   get "notifications/" => "notifications#index"
   get "notifications/index"
   get "notifications/dismiss"
+  get "notifications/dismiss_all"
 
   get "api/orders"
   get "api/" => "api#orders"
@@ -14,13 +29,9 @@ Ships::Application.routes.draw do
   get "report/price"
   get "report/" => "report#price"
 
-  get "home/index"
-
-  resources :statuses
-
-  resources :ships
-
-  resources :runs
+  scope "/admin" do
+    resources :statuses, :ships, :runs
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

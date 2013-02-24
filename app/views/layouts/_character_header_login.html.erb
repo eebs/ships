@@ -1,7 +1,7 @@
 <ul class="nav pull-right">
   <% if character_signed_in? %>
     <% if @notification_count %>
-      <li>
+      <li class="<%= is_active?("notifications") %>">
         <a href="<%= notifications_path %>"><span class="badge <%= if @notification_count > 0 then 'badge-important' end %>"><%= @notification_count %></span></a>
       </li>
     <% end %>
@@ -11,7 +11,6 @@
       <ul class="dropdown-menu">
         <li class="nav-header">Account</li>
         <li><a href="<%= edit_character_registration_path %>"><i class=" icon-wrench"></i> Settings</a></li>
-        <li><a href="<%= notifications_path %>"><i class=" icon-flag"></i> Notifications</a></li>
         <li class="divider"></li>
         <li><%= link_to "Sign Out",  destroy_character_session_path, method: :delete %></li>
       </ul>

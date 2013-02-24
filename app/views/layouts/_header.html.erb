@@ -1,7 +1,11 @@
 <header class="navbar navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container">
-      <%= link_to "Koprulu Sector", '/', id: "logo" %>
+      <%= 
+      link_to '/', id: "logo" do
+        image_tag('http://image.eveonline.com/Corporation/98143000_32.png') + " Koprulu Sector"
+      end
+      %>
       <nav>
         <% if character_signed_in? %>
           <%= render "layouts/character_header" %>

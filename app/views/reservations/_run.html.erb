@@ -1,0 +1,79 @@
+<div class="home-ship row">
+  <div class="span3 offset1">
+    <div class="media">
+      <span class="pull-left">
+        <%=
+        if run.ship.type_id
+          image_tag "http://image.eveonline.com/InventoryType/#{run.ship.type_id}_64.png", :class => 'media-object'
+        else
+          image_tag "placeholder.jpg", :height => 64, :width => 64, :class => 'media-object'
+        end
+        %>
+      </span>
+      <div class="media-body">
+        <h4 class="media-heading"><%= run.ship.name %></h4> <h4 class="media-heading ship-light-text">#<%= run.ship_number %></h4>
+        <div class="ship-light-text">Type: <%= run.ship.ship_type %></div>
+        <% if run.start_date.present? %>
+          <div class="ship-light-text">Started: <%= Time.zone.parse(run.start_date).to_s(:month_date) %></div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="span4">
+    <div class="media">
+      <span class="pull-left run-status-indicator" style="background-color: <%= run.status.color %>">
+      </span>
+      <div class="media-body">
+        <h4 class="media-heading"><%= run.status.name %></h4>
+        <div class="ship-light-text">
+          <%=
+          unless run.next_due.empty?
+            due = Time.zone.parse(run.next_due)
+            if due.future?
+                "Current task finishes " + distance_of_time_in_words_to_now(due) + " from now"
+            else
+                "Current task finished " + time_ago_in_words(due) + " ago"
+            end
+          end
+          %>
+        </div>
+        <div class="ship-light-text">
+          Last updated <%= time_ago_in_words(run.updated_at) + ' ago' %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="span4">
+    <div class="media">
+      <span class="pull-left run-status-indicator" style="background-color: <%= run.reservation ? '#FF0000' : '#00FF00' %>">
+      </span>
+      <div class="media-body">
+        <h4 class="media-heading"><%= run.reservation ? 'Reserved' : 'Available' %></h4>
+        <div class="ship-light-text ship-eta">
+          <%=
+          eta = rand(1..10).days.from_now
+          if eta.future?
+                "- finishes in " + distance_of_time_in_words_to_now(eta)
+            else
+                "- finished " + time_ago_in_words(eta) + " ago"
+            end
+            %>
+        </div>
+        <div>
+          <% if character_signed_in? %>
+            <% if !run.reservation %>
+              <%= link_to 'Reserve', reservations_path(:id => run.id), :method => :post, :class => 'ship-reserve-button btn btn-mini btn-primary' %>
+            <% elsif run.reservation.character == current_character  %>
+              <div class="ship-light-text">Reserved <%= time_ago_in_words(run.reservation.created_at) %> ago.</div>
+              <div class="ship-light-text"><%= link_to "View Reservation", reservation_path(run.reservation) %></div>
+            <% end %>
+          <% else %>
+            <% unless run.reservation %>
+              <%= link_to 'Sign in', new_character_session_path %> to reserve
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

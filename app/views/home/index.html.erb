@@ -1,24 +1,34 @@
-<h3>Needs Attention</h3>
-<hr/>
-
-<% unless @attention.empty? %>
-    <%= render 'home/attention' %>
-<% else %>
-    No ships need attention
+<% unless character_signed_in? %>
+  <div class="row">     
+    <div class="span12 center"> 
+      <h1>We Sell Capital Ships</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="span5 offset1">
+      <h3 class="center">About Us</h3>
+      <p class="intro-text">Koprulu Sector is a small corporation dedicated to manufacturing capital ships. Our capacity is currently limited to carriers, but we will be adding additional ships to our repertoire in the near future.</p>
+      <p>Pickup system is <strong>Arton II - CreoDron Factory</strong>.</p>
+    </div>
+    <div class="span5">
+      <h3 class="center">How does it work?</h3>
+      <p class="intro-text">This site started as a way for us to manage our production chain, but additional functionality was quickly added to allow interaction between us and our customers. All ships in our current production chain are listed below, clicking Reserve on any of the runs will reserve the ship for you. Once the ship is completed, a private contracted will be created for the character that made the reservation. Once a ship is reserved, you can track its progress and receive notifications about any changes.</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="span10 offset1">
+      <br/>
+      <hr/>
+    </div>
+  </div>
 <% end %>
-
-<h3>In Progress</h3>
-
-<% unless @progress.empty? %>
-    <%= render 'home/progress' %>
-<% else %>
-    No ships in progress
-<% end %>
-
-<h3>Sold</h3>
-
-<% unless @sold.empty? %>
-    <%= render 'home/sold' %>
-<% else %>
-    No ships sold
-<% end %>
+<div class="home-ship row">
+  <div class="span10 offset1">
+    <div class="center">
+      <h3>Current Production</h3>
+      <span class="dollar-amount-sold"><%= number_to_currency(Run.dollar_amount_sold) %> worth of ISK sold</span>
+    </div>
+    <br/>
+  </div>
+</div>
+<%= render :partial => "home/run", :collection => @ships || 'There are no ships currently in production.' %>

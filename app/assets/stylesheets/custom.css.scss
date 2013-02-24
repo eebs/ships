@@ -68,7 +68,7 @@ hr {
   color: $grayDarker;
   text-transform: uppercase;
   letter-spacing: -1px;
-  padding-top: 9px;
+  padding-top: 5px;
   font-weight: bold;
   line-height: 1;
   &:hover {
@@ -121,30 +121,15 @@ input {
   height: auto !important;
 }
 
-.radio input {
-  padding: 5px;
-}
-
-#error_explanation {
+.error-base {
   color: #B94A48;
-  ul {
-    list-style: none;
-    margin: 0 0 18px 0;
-  }
+  padding-left: 0px;
+  margin-bottom: 10px;
 }
 
-.field_with_errors {
-  @extend .control-group;
-  @extend .error;
- }
-
- .inline-label {
-  display: inline;
- }
-
- .remember-me {
-  margin-bottom: 6px;
- }
+#finish-time-hint {
+  margin-bottom: 20px;
+}
 
 /* miscellaneous */
 
@@ -200,4 +185,69 @@ input {
 .registration_character_name {
   font-size: 20px;
   margin-left: 5px;
+}
+
+/* home text */
+
+.intro-text {
+  color: #777;
+  text-align: justify;
+}
+
+/* home ships */
+
+.home-ship {
+  margin-bottom: 10px;
+}
+
+h3.media-heading, h4.media-heading {
+  display: inline;
+}
+
+.ship-light-text {
+  color:  #999999;
+}
+
+.run-status-indicator {
+  width: 8px;
+  height: 64px;
+}
+
+.pull-left.run-status-indicator {
+  margin-right: 6px;
+}
+
+.ship-eta {
+  display: inline;
+}
+
+.ship-reserve-button {
+  margin-top: 5px;
+}
+
+.admin-link-run-title {
+  color: #000;
+}
+
+/* reservations */
+
+.reserved-ago-container {
+  margin-bottom: 9px;
+}
+
+.reserved-ago {
+  padding-bottom: 3px;
+}
+
+.reservation-finishes {
+  margin-top: 30px;
+}
+
+.notifications-title-inline {
+  display: inline;
+}
+
+.dismiss-all-button {
+  margin-left: 12px;
+  margin-bottom: 6px;
 }

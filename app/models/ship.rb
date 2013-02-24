@@ -1,5 +1,5 @@
 class Ship < ActiveRecord::Base
-  attr_accessible :name, :ship_type
+  attr_accessible :name, :ship_type, :type_id, :finish_time
 
   has_many :runs
 

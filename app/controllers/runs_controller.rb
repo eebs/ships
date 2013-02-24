@@ -5,7 +5,7 @@ class RunsController < ApplicationController
   # GET /runs
   # GET /runs.json
   def index
-    @active = Run.active
+    @active = Run.active.includes([:ship, :status])
     @inactive = Run.inactive
   end
 
@@ -40,7 +40,7 @@ class RunsController < ApplicationController
   # POST /runs.json
   def create
     run_params = params[:run]
-    [:next_due, :start_date, :sell_date].each do |date|
+    [:next_due, :start_date, :sell_date, :finish_date].each do |date|
       date_param = run_params[date]
       begin
         date_param = Time.zone.parse(date_param)
@@ -69,7 +69,7 @@ class RunsController < ApplicationController
   def update
     @run = Run.find(params[:id])
     run_params = params[:run]
-    [:next_due, :start_date, :sell_date].each do |date|
+    [:next_due, :start_date, :sell_date, :finish_date].each do |date|
       date_param = run_params[date]
       begin
         date_param = Time.zone.parse(date_param)

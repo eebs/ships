@@ -1,0 +1,32 @@
+<h3>Listing Reservations</h3><hr/>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Character</th>
+      <th>Run</th>
+      <th>Created</th>
+      <th>Modify</th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @reservations.each do |reservation| %>
+    <tr>
+      <td><%= reservation.character.name %></td>
+      <td><%= "#{reservation.run.ship.name} #{reservation.run.ship_number}" %></td>
+      <td><%= reservation.created_at.to_formatted_s(:long) %></td>
+      <td>
+        <div class="btn-toolbar">
+          <div class="btn-group">
+            <a class="btn" href=<%= edit_admin_reservation_path(reservation) %>><i class="icon-edit"></i></a>
+            <%= link_to raw('<i class="icon-remove"></i>'), admin_reservation_path(reservation), class: 'btn', method: :delete, data: { confirm: 'Are you sure?' } %>
+          </div>
+        </div>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New Reservation', new_admin_reservation_path, class: 'btn btn-primary' %>
