@@ -7,7 +7,7 @@ class RunPresenter < BasePresenter
   end
 
   def title
-    if current_character.admin?
+    if character_signed_in? && current_character.admin?
       link_to edit_run_path(run), :class => 'admin-link-run-title' do
         title_text
       end
