@@ -7,6 +7,16 @@ class RunPresenter < BasePresenter
   end
 
   def title
+    if current_character.admin?
+      link_to edit_run_path(run), :class => 'admin-link-run-title' do
+        title_text
+      end
+    else
+      title_text
+    end
+  end
+
+  def title_text
     content_tag(:h4, run.ship.name, :class => 'media-heading') + content_tag(:h4, " ##{run.ship_number}", :class => 'media-heading ship-light-text')
   end
 
