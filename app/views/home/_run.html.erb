@@ -29,21 +29,7 @@
         <div class="media-body">
           <h4 class="media-heading"><%= run_presenter.status_header %></h4>
           <div class="ship-light-text ship-eta"><%= run_presenter.finishes_in %></div>
-          <div>
-            <% if character_signed_in? %>
-              <% if !run.reservation %>
-                <%= link_to 'Reserve', new_reservation_path(:id => run), :class => 'ship-reserve-button btn btn-mini btn-primary' %>
-              <% elsif current_character.admin? %>
-                <div class="ship-light-text">Reserved by <%= link_to run.reservation.character.name, character_path(run.reservation.character) %></div>
-                <div class="ship-light-text"><%= link_to "View Reservation", reservation_path(run.reservation) %></div>
-              <% elsif (run.reservation.character == current_character) %>
-                <div class="ship-light-text">Reserved <%= time_ago_in_words(run.reservation.created_at) %> ago.</div>
-                <div class="ship-light-text"><%= link_to "View Reservation", reservation_path(run.reservation) %></div>
-              <% end %>
-            <% else %>
-              <%= run_presenter.sign_in_link %>
-            <% end %>
-          </div>
+          <div><%= run_presenter.status_body %></div>
         </div>
       </div>
     </div>

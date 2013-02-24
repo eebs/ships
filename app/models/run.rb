@@ -33,6 +33,10 @@ class Run < ActiveRecord::Base
     Time.zone.parse(finish_date) if finish_date? 
   end
 
+  def reservation?
+    !!reservation
+  end
+
   def self.sold_ordered
     if sold_status = Status.find_by_name('Sold')
       where('status_id = ?', sold_status.id).order('sell_date DESC')

@@ -55,8 +55,46 @@ class RunPresenter < BasePresenter
     end
   end
 
+  def status_body
+    character_signed_in? ? signed_in_status_body : public_status_body
+  end
+
+  def signed_in_status_body
+    if !run.reservation?
+      reserve_button
+    elsif current_character.admin?
+      reserved_by
+      view_reservation
+    elsif (run.reservation.character == current_character)
+      reserved_ago
+      view_reservation
+    end
+  end
+
+  def public_status_body
+    sign_in_link
+  end
+
   def sign_in_link
     link_to('Sign in', new_character_session_path) + ' to reserve' unless run.reservation
+  end
+
+  def view_reservation
+    content_tag(:div, :class => 'ship-light-text') do
+      link_to "View Reservation", reservation_path(run.reservation)
+    end
+  end
+
+  def reserved_ago
+    content_tag(:div, :class => 'ship-light-text') do
+      'Reserved ' + time_ago_in_words(run.reservation.created_at) + ' ago.'
+    end
+  end
+
+  def reserved_by
+    content_tag(:div, :class => 'ship-light-text') do
+      'Reserved by ' + link_to(run.reservation.character.name, character_path(run.reservation.character))
+    end
   end
 
 private
@@ -80,5 +118,9 @@ private
     else
        (run.status == Status.on_market) ?  on_market : not_on_market
     end
+  end
+
+  def reserve_button
+    link_to 'Reserve', new_reservation_path(:id => run), :class => 'ship-reserve-button btn btn-mini btn-primary'
   end
 end
