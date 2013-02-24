@@ -1,3 +1,5 @@
 <% Ship.all.each do |ship| %>
-  <%= "#{ship.name} - #{ship.finish_time.days.from_now.to_formatted_s(:year_month_day)}" %>
+  <% if ship.finish_time? %>
+    <%= "#{ship.name} - #{ship.finish_time.days.from_now.to_formatted_s(:year_month_day)}" %>
+  <% end %>
 <% end %>
