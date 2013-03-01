@@ -7,7 +7,9 @@ class ReportController < ApplicationController
   end
 
   def price
-    @sold = Run.chart_data
+    start = Run.where(:status_id => Status.sold).order('sell_date asc').first.sell_date
+    start_date = Time.zone.parse(start)
+    @sold = Run.chart_data start_date
   end
 
 private
