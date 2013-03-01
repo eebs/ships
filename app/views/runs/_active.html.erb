@@ -17,13 +17,12 @@
     <tbody>
     <% @active.each do |run| %>
       <tr style="background-color: <%= run.status.color %>">
-        <td title="<%= Time.zone.parse(run.next_due) unless run.next_due.empty? %>"><%= 
-            unless run.next_due.empty?
-                due = Time.zone.parse(run.next_due)
-                if due.future?
-                    distance_of_time_in_words_to_now(due) + " from now"
+        <td title="<%= run.next_due unless run.next_due.nil? %>"><%= 
+            unless run.next_due.nil?
+                if run.next_due.future?
+                    distance_of_time_in_words_to_now(run.next_due) + " from now"
                 else
-                    time_ago_in_words(due) + " ago"
+                    time_ago_in_words(run.next_due) + " ago"
                 end
             end
         %></td>
@@ -33,12 +32,12 @@
         <td><%= number_to_currency(run.sell_price) if run.sell_price %></td>
         <td><%= 
             if run.start_date.present?
-                Time.zone.parse(run.start_date).to_formatted_s(:short)
+                run.start_date.to_formatted_s(:short)
             end
         %></td>
         <td><%= 
             if run.finish_date.present?
-                Time.zone.parse(run.finish_date).to_formatted_s(:short)
+                run.finish_date.to_formatted_s(:short)
             end
         %></td>
         <td><%= run.notes %></td>

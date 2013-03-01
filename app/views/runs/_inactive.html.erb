@@ -21,13 +21,13 @@
         <td><%= run.status.name %></td>
         <td><%= number_to_currency(run.sell_price) if run.sell_price %></td>
         <td><%= 
-            unless run.start_date.empty?
-                Time.zone.parse(run.start_date).to_formatted_s(:short)
+            unless run.start_date.nil?
+                run.start_date.to_formatted_s(:short)
             end
         %></td>
         <td><%= 
-            unless run.sell_date.empty?
-                Time.zone.parse(run.sell_date).to_formatted_s(:short)
+            unless run.sell_date.nil?
+                run.sell_date.to_formatted_s(:short)
             end
         %></td>
         <td><%= run.notes %></td>
