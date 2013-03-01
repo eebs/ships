@@ -72,7 +72,7 @@ class Run < ActiveRecord::Base
 
   def self.prices_by_day(start)
     runs = where(sell_date: start.beginning_of_day..Time.zone.now)
-    runs = order.group("sell_date")
+    runs = runs.group("sell_date")
     runs = runs.select("sell_date, sum(sell_price) as total_price")
     runs.each_with_object({}) do |run, prices|
       prices[run.sell_date.to_date] = run.total_price
