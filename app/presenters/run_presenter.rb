@@ -25,7 +25,7 @@ class RunPresenter < BasePresenter
   end
 
   def started
-    "Started: " + Time.zone.parse(run.start_date).to_s(:month_date) if run.start_date.present?
+    "Started: " + run.start_date.to_s(:month_date) if run.start_date.present?
   end
 
   def status
@@ -33,12 +33,11 @@ class RunPresenter < BasePresenter
   end
 
   def current_task_time
-    unless run.next_due.empty?
-      due = Time.zone.parse(run.next_due)
-      if due.future?
-          "Current task finishes in " + distance_of_time_in_words_to_now(due)
+    unless run.next_due.nil?
+      if run.next_due.future?
+        "Current task finishes in " + distance_of_time_in_words_to_now(run.next_due)
       else
-          "Current task finished " + time_ago_in_words(due) + " ago"
+        "Current task finished " + time_ago_in_words(run.next_due) + " ago"
       end
     end
   end
@@ -56,12 +55,12 @@ class RunPresenter < BasePresenter
   end
 
   def finishes_in
-    return "- finish time unknown" unless run.eta
-    
-    if run.eta.future?
-        "- finishes in " + distance_of_time_in_words_to_now(run.eta)
+    return "- finish time unknown" if run.finish_date.nil?
+
+    if run.finish_date.future?
+        "- finishes in " + distance_of_time_in_words_to_now(run.finish_date)
     else
-        "- finished " + time_ago_in_words(run.eta) + " ago"
+        "- finished " + time_ago_in_words(run.finish_date) + " ago"
     end
   end
 

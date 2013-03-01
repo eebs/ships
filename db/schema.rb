@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130210180640) do
+ActiveRecord::Schema.define(:version => 20130301205152) do
 
   create_table "characters", :force => true do |t|
     t.string   "encrypted_password",  :default => "",    :null => false
@@ -70,17 +70,17 @@ ActiveRecord::Schema.define(:version => 20130210180640) do
   end
 
   create_table "runs", :force => true do |t|
-    t.string   "next_due"
+    t.datetime "next_due"
     t.integer  "ship_number"
     t.float    "sell_price"
-    t.string   "start_date"
-    t.string   "sell_date"
+    t.datetime "start_date"
+    t.datetime "sell_date"
     t.text     "notes"
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
-    t.integer  "ship_id",     :limit => 255
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.integer  "ship_id"
     t.integer  "status_id"
-    t.string   "finish_date"
+    t.datetime "finish_date"
   end
 
   create_table "ships", :force => true do |t|

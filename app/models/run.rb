@@ -29,10 +29,6 @@ class Run < ActiveRecord::Base
     "#{ship.name} #{ship_number}"
   end
 
-  def eta
-    Time.zone.parse(finish_date) if finish_date? 
-  end
-
   def reservation?
     !!reservation
   end
