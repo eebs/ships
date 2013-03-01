@@ -8,6 +8,7 @@ development:
   encoding: unicode
   database: ships_development
   pool: 5
+  user: ships
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -17,3 +18,4 @@ test:
   encoding: unicode
   database: ships_test
   pool: 5
+  user: ships
