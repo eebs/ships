@@ -27,11 +27,10 @@
         <div class="ship-light-text">
           <%=
           if @run.finish_date?
-              eta = Time.zone.parse(@run.finish_date)
-              if eta.future?
-                  "Finishes in approximately " + distance_of_time_in_words_to_now(eta)
+              if @run.finish_date.future?
+                  "Finishes in approximately " + distance_of_time_in_words_to_now(@run.finish_date)
               else
-                  "Finished " + time_ago_in_words(eta) + " ago"
+                  "Finished " + time_ago_in_words(@run.finish_date) + " ago"
               end
             else
               "Finish time unknown"

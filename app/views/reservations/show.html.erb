@@ -20,7 +20,7 @@
         </div>
         <div class="reservation-info">
           <% if @reservation.run.start_date.present? %>
-            <div class="ship-light-text">Started: <%= Time.zone.parse(@reservation.run.start_date).to_s(:month_date) %></div>
+            <div class="ship-light-text">Started: <%= @reservation.run.start_date.to_s(:month_date) %></div>
           <% end %>
           <div class="ship-light-text">
             Last updated <%= time_ago_in_words(@reservation.run.updated_at) + ' ago' %>
@@ -33,12 +33,11 @@
             <h4 class="media-heading"><%= @reservation.run.status.name %></h4>
             <div class="ship-light-text">
               <%=
-              unless @reservation.run.next_due.empty?
-                due = Time.zone.parse(@reservation.run.next_due)
-                if due.future?
-                    "Current task finishes " + distance_of_time_in_words_to_now(due) + " from now"
+              unless @reservation.run.next_due.nil?
+                if @reservation.run.next_due.future?
+                    "Current task finishes " + distance_of_time_in_words_to_now(@reservation.run.next_due) + " from now"
                 else
-                    "Current task finished " + time_ago_in_words(due) + " ago"
+                    "Current task finished " + time_ago_in_words(@reservation.run.next_due) + " ago"
                 end
               end
               %>
@@ -51,11 +50,10 @@
         <div class="reservation-finishes">
           <h4><%=
           if @reservation.run.finish_date?
-              eta = Time.zone.parse(@reservation.run.finish_date)
-              if eta.future?
-                  "Finishes in approximately " + distance_of_time_in_words_to_now(eta)
+              if @reservation.run.finish_date.future?
+                  "Finishes in approximately " + distance_of_time_in_words_to_now(@reservation.run.finish_date)
               else
-                  "Finished " + time_ago_in_words(eta) + " ago"
+                  "Finished " + time_ago_in_words(@reservation.run.finish_date) + " ago"
               end
             else
               "Finish time unknown"
