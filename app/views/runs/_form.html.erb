@@ -2,14 +2,14 @@
   <%= f.error_notification %>
   <%= f.error :base, :class => 'error-base' %>
 
-  <%= f.input :next_due %>
+  <%= f.input :next_due, :as => :ui_date_time_picker %>
   <%= f.association :ship, :prompt => true %>
   <%= f.input :ship_number %>
   <%= f.association :status, :prompt => true %>
   <%= f.input :sell_price %>
-  <%= f.input :start_date %>
-  <%= f.input :sell_date %>
-  <%= f.input :finish_date %>
+  <%= f.input :start_date, :as => :ui_date_time_picker %>
+  <%= f.input :sell_date, :as => :ui_date_time_picker %>
+  <%= f.input :finish_date, :as => :ui_date_time_picker %>
   <div id="finish-time-hint"><%= render 'runs/finish_dates' %></div>
   <%= f.input :notes, :input_html => { :rows => 3 } %>
   <%= f.button :submit, :class => 'btn btn-primary btn-large' %>

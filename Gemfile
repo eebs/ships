@@ -38,6 +38,8 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'jquery_datepicker'
+gem 'ui_datepicker-rails3'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
