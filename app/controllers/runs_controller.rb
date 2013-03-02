@@ -43,7 +43,7 @@ class RunsController < ApplicationController
 
     respond_to do |format|
       if @run.save
-        format.html { redirect_to :back, notice: 'Run was successfully created.' }
+        format.html { redirect_to runs_path, notice: 'Run was successfully created.' }
         format.json { render json: @run, status: :created, location: @run }
       else
         format.html { render action: "new" }
@@ -59,7 +59,7 @@ class RunsController < ApplicationController
 
     respond_to do |format|
       if @run.update_attributes(params[:run])
-        format.html { redirect_to :back, notice: 'Run was successfully updated.' }
+        format.html { redirect_to runs_path, notice: 'Run was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
