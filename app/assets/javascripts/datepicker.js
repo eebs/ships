@@ -4,5 +4,6 @@ $(document).ready(function(){
             });
   $('input.ui-datetime-picker').datetimepicker({
                 dateFormat : "yy-mm-dd",
+                showButtonPanel : false
             });
 });

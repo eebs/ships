@@ -1,3 +1,4 @@
+<p><strong>Current Time: <%= Time.zone.now.to_formatted_s(:iso8601) %></strong></p>
 <%= simple_form_for(@run, :html => {:class => 'form-vertical' }) do |f| %>
   <%= f.error_notification %>
   <%= f.error :base, :class => 'error-base' %>
