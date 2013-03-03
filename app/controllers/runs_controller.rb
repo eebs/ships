@@ -81,7 +81,12 @@ class RunsController < ApplicationController
   end
 
   def edit_multiple
-    @runs = Run.find(params[:run_ids])
+    if params[:run_ids].nil?
+      flash[:alert] = "No runs selected"
+      return redirect_to :back
+    else
+      @runs = Run.find(params[:run_ids])
+    end
   end
 
   def update_multiple
