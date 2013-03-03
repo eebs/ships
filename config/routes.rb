@@ -30,7 +30,13 @@ Ships::Application.routes.draw do
   get "report/" => "report#price"
 
   scope "/admin" do
-    resources :statuses, :ships, :runs
+    resources :statuses, :ships
+    resources :runs do
+      collection do
+        post :edit_multiple
+        put :update_multiple
+      end
+    end
   end
 
   # The priority is based upon order of creation:

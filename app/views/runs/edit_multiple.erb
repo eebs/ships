@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="span6 offset3">
+    <h3>Editing Checked Runs</h3><hr/>
+    <%= form_tag update_multiple_runs_path, method: :put do %>
+      <ul id="edit-multiple-run-list" >
+        <% @runs.each do |run| %>
+          <li>
+            <%= hidden_field_tag "run_ids[]", run.id %>
+            <%= run.display_name %>
+            <ul class="errors">
+              <% run.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </li>
+        <% end %>
+      </ul>
+      <%= fields_for :run do |f| %>
+        <div class="field">
+          <%= f.label :sell_price %>
+          <%= f.text_field :sell_price %>
+        </div>
+      <% end %>
+      <div class="actions">
+        <%= submit_tag "Update", class: 'btn btn-primary' %>
+      </div>
+    <% end %>
+  </div>
+</div>

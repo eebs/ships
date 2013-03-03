@@ -79,4 +79,21 @@ class RunsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def edit_multiple
+    @runs = Run.find(params[:run_ids])
+  end
+
+  def update_multiple
+    @runs = Run.find(params[:run_ids])
+    @runs.reject! do |run|
+      run.update_attributes(params[:run].reject { |k,v| v.blank? })
+    end
+    if @runs.empty?
+      redirect_to runs_url
+    else
+      @run = Run.new(params[:run])
+      render "edit_multiple"
+    end
+  end
 end
