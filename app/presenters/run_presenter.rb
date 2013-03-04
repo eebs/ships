@@ -35,10 +35,11 @@ class RunPresenter < BasePresenter
   def current_task_time
     unless run.next_due.nil?
       if run.next_due.future?
-        "Current task finishes in " + distance_of_time_in_words_to_now(run.next_due)
+        out = "Current task finishes in " + home_strong_tag(distance_of_time_in_words_to_now(run.next_due))
       else
-        "Current task finished " + time_ago_in_words(run.next_due) + " ago"
+        out ="Current task finished " + home_strong_tag(time_ago_in_words(run.next_due)) + " ago"
       end
+      out.html_safe
     end
   end
 
@@ -58,10 +59,11 @@ class RunPresenter < BasePresenter
     return "- finish time unknown" if run.finish_date.nil?
 
     if run.finish_date.future?
-        "- finishes in " + distance_of_time_in_words_to_now(run.finish_date)
+        out = "- finishes in " + home_strong_tag(distance_of_time_in_words_to_now(run.finish_date))
     else
-        "- finished " + time_ago_in_words(run.finish_date) + " ago"
+        out ="- finished " + home_strong_tag(time_ago_in_words(run.finish_date)) + " ago"
     end
+    out.html_safe
   end
 
   def status_body
@@ -131,5 +133,9 @@ private
 
   def reserve_button
     link_to 'Reserve', new_reservation_path(:id => run), :class => 'ship-reserve-button btn btn-mini btn-primary'
+  end
+
+  def home_strong_tag(content)
+    content_tag(:strong, content, :class => 'home-time-strong')
   end
 end
