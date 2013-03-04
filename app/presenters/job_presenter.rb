@@ -16,13 +16,16 @@ class JobPresenter < BasePresenter
     api.char_name(job.installerID)
   end
 
-  def finishes
-    finishes = Time.zone.parse(job.endProductionTime)
-    finishes.future? ? "#{distance_of_time_in_words_to_now(finishes)} from now" : "#{time_ago_in_words(finishes)} ago"
+  def status
+    finishes.future? ? "finishes in #{distance_of_time_in_words_to_now(finishes)}" : "Ready"
+  end
+
+  def status_class
+    finishes.past? ? "ready" : 'in-progress'
   end
 
   def progress_bar
-    content_tag :div, :class => 'progress progress-info progress-striped' do
+    content_tag :div, :class => "progress progress-striped #{progress_color}" do
       content_tag :div, '', :class => 'bar', :style => progress_bar_style
     end    
   end
@@ -37,6 +40,10 @@ class JobPresenter < BasePresenter
 
 private
 
+  def finishes
+    Time.zone.parse(job.endProductionTime)
+  end
+
   def percent_complete
     total = end_time - start_time
     total = (total == 0) ? 1 : total
@@ -46,5 +53,13 @@ private
 
   def progress_bar_style
     "width: #{percent_complete}%;"
+  end
+
+  def progress_color
+    if finishes.past?
+      'progress-success'
+    else
+      'progress-warning'
+    end
   end
 end

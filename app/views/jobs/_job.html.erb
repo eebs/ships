@@ -1,9 +1,9 @@
 <% present job do |job_presenter| %>
-  <tr>
+  <tr class="job-row">
     <td><%= job_presenter.icon %></td>
     <td><%= job_presenter.item_name %></td>
     <td><%= job_presenter.character_name %></td>
-    <td><%= job_presenter.finishes %></td>
+    <td class="<%= job_presenter.status_class %>"><%= job_presenter.status %></td>
     <td class='job-progress'><%= job_presenter.progress_bar %></td>
   </tr>
 <% end %>
