@@ -8,16 +8,17 @@
       <li class="<%= is_active?("runs") %>"><%= link_to "Runs",   runs_path %></li>
       <li class="<%= is_active?("report") %>"><%= link_to "Reports",   report_price_path %></li>
       <li class="<%= is_active?("api") %>"><%= link_to "Orders",   api_orders_path %></li>
-      <li class="dropdown <%= is_active?("admin/reservations") %><%= is_active?("ships") %><%= is_active?("statuses") %>">
+      <li class="dropdown <%= is_active?("jobs") %><%= is_active?("admin/reservations") %><%= is_active?("ships") %><%= is_active?("statuses") %>">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin<b class="caret"></b></a>
         <ul class="dropdown-menu">
           <li class="nav-header">EvE</li>
-          <li><a href="<%= admin_reservations_path %>"><i class=" icon-ok"></i> Reservations</a>
-          <li><a href="<%= ships_path %>"><i class=" icon-plane"></i> Ships</a>
-          <li><a href="<%= statuses_path %>"><i class=" icon-tasks"></i> Statuses</a>
+          <li><a href="<%= jobs_path %>"><i class=" icon-tasks"></i> Jobs</a></li>
+          <li><a href="<%= admin_reservations_path %>"><i class=" icon-ok"></i> Reservations</a></li>
+          <li><a href="<%= ships_path %>"><i class=" icon-plane"></i> Ships</a></li>
+          <li><a href="<%= statuses_path %>"><i class=" icon-list"></i> Statuses</a></li>
           <li class="divider"></li>
           <li class="nav-header">Characters</li>
-          <li><a href="<%= characters_path %>"><i class=" icon-user"></i> Characters</a>
+          <li><a href="<%= characters_path %>"><i class=" icon-user"></i> Characters</a></li>
         </ul>
       </li>
     <% end %>
