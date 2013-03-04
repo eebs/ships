@@ -6,6 +6,10 @@
   margin-bottom: 0px;
 }
 
+.table .job-row td{
+  vertical-align:middle;
+}
+
 .job-progress {
   width: 100px;
 }
@@ -16,4 +20,8 @@
 
 .job-row .in-progress {
   color: #E28709;
+}
+
+.table .job-row td {
+  height: 32px;
 }
