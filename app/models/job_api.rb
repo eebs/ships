@@ -60,4 +60,8 @@ class JobApi < EveApi
     attributes
   end
 
+  def next_update
+    api.scope = 'corp'
+    Time.zone.parse(api.IndustryJobs.cached_until)
+  end
 end

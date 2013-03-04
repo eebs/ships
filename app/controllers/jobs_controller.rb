@@ -9,6 +9,7 @@ class JobsController < ApplicationController
     # values. In addition, values must be in double quotes. The following
     # is a bit of a hack.
     @jobs = Job.where(:completed => '0').order('"endProductionTime"')
+    @next_update = JobApi.new.next_update
 
     respond_to do |format|
       format.html # index.html.erb
