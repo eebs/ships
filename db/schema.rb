@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130301205152) do
+ActiveRecord::Schema.define(:version => 20130303234943) do
 
   create_table "characters", :force => true do |t|
     t.string   "encrypted_password",  :default => "",    :null => false
@@ -29,6 +29,46 @@ ActiveRecord::Schema.define(:version => 20130301205152) do
   end
 
   add_index "characters", ["name"], :name => "index_characters_on_name", :unique => true
+
+  create_table "jobs", :force => true do |t|
+    t.string   "jobID"
+    t.string   "assemblyLineID"
+    t.string   "containerID"
+    t.string   "installedItemID"
+    t.string   "installedItemLocationID"
+    t.string   "installedItemQuantity"
+    t.string   "installedItemProductivityLevel"
+    t.string   "installedItemMaterialLevel"
+    t.string   "installedItemLicensedProductionRunsRemaining"
+    t.string   "outputLocationID"
+    t.string   "installerID"
+    t.string   "runs"
+    t.string   "licensedProductionRuns"
+    t.string   "installedInSolarSystemID"
+    t.string   "containerLocationID"
+    t.string   "materialMultiplier"
+    t.string   "charMaterialMultiplier"
+    t.string   "timeMultiplier"
+    t.string   "charTimeMultiplier"
+    t.string   "installedItemTypeID"
+    t.string   "outputTypeID"
+    t.string   "containerTypeID"
+    t.string   "installedItemCopy"
+    t.string   "completed"
+    t.string   "completedSuccessfully"
+    t.string   "installedItemFlag"
+    t.string   "outputFlag"
+    t.string   "activityID"
+    t.string   "completedStatus"
+    t.string   "installTime"
+    t.string   "beginProductionTime"
+    t.string   "endProductionTime"
+    t.string   "pauseProductionTime"
+    t.datetime "created_at",                                   :null => false
+    t.datetime "updated_at",                                   :null => false
+  end
+
+  add_index "jobs", ["jobID"], :name => "index_jobs_on_jobID", :unique => true
 
   create_table "messages", :force => true do |t|
     t.string   "title"

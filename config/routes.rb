@@ -37,6 +37,7 @@ Ships::Application.routes.draw do
         put :update_multiple
       end
     end
+    resources :jobs
   end
 
   # The priority is based upon order of creation:
