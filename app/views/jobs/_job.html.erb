@@ -1,27 +1,7 @@
-<tr>
-  <td><%= 
-    api = EveApi.new
-    api.type_name(job.outputTypeID)
-    %>
-  </td>
-  <td><%= 
-    api = EveApi.new
-    api.char_name(job.installerID)
-    %>
-  </td>
-  <td><%= job.runs %></td>
-  <td><%= distance_of_time_in_words_to_now(job.endProductionTime) %></td>
-  <td class='job-progress'>
-    <div class="progress progress-info progress-striped">
-      <div class="bar" style="width: <%= 
-        start_date = Time.zone.parse(job.beginProductionTime)
-        end_date = Time.zone.parse(job.endProductionTime)
-        now = Time.zone.now
-
-        total_days = end_date - start_date
-        done_days = now - start_date
-        (done_days/total_days)*100
-      %>%;"></div>
-    </div>
-  </td>
-</tr>
+<% present job do |job_presenter| %>
+  <tr>
+    <td><%= job_presenter.icon %></td>
+    <td><%= job_presenter.item_name %></td>
+    <td><%= job_presenter.character_name %></td>
+  </tr>
+<% end %>
