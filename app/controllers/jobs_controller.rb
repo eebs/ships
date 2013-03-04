@@ -2,7 +2,10 @@ class JobsController < ApplicationController
   # GET /jobs
   # GET /jobs.json
   def index
-    @jobs = Job.where(:completed => '0')
+    # AR doesn't quote order by clauses. Postgres downcases all non-quoted 
+    # values. In addition, values must be in double quotes. The following
+    # is a bit of a hack.
+    @jobs = Job.where(:completed => '0').order('"endProductionTime"')
 
     respond_to do |format|
       format.html # index.html.erb
