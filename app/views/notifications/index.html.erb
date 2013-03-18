@@ -13,8 +13,9 @@
         </div>
         <div class="span9">
           <div class="note-text <%= if note.read_at.nil? then 'note-text-unread' end%>">
-            <div class="note-title"><strong><%= note.message.title %></strong></div>
-            <div><%= simple_format note.message.body %></div>
+            <% present note.message do |message_presenter| %>
+              <%= message_presenter.render_message %>
+            <% end %>
           </div>
         </div>
       </div>
