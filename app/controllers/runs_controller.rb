@@ -95,6 +95,7 @@ class RunsController < ApplicationController
       run.update_attributes(params[:run].reject { |k,v| v.blank? })
     end
     if @runs.empty?
+      flash[:notice] = "Runs updated successfully"
       redirect_to runs_url
     else
       @run = Run.new(params[:run])
