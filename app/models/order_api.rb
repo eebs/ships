@@ -70,11 +70,9 @@ private
   def update_changes(api_order, db_order = nil)
     order_attributes = get_attributes(api_order) 
     db_order ||= Order.find_by_orderID(api_order.orderID)
-    changes = {}
     if db_order # Existing order
       db_order.assign_attributes(order_attributes)
       if db_order.changed?
-        changes[api_order.orderID] = db_order.changes
         send_change_notification(db_order)
         db_order.save
       end
