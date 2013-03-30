@@ -1,6 +1,8 @@
 class Order < ActiveRecord::Base
   attr_accessible :bid, :charID, :duration, :minVolume, :orderID, :orderState, :price, :range, :stationID, :typeID, :volEntered, :volRemaining
 
+  scope :open, where(:orderState => '0')
+
   def item_title
     api = OrderApi.new
     api.type_name(typeID)
@@ -20,7 +22,7 @@ class Order < ActiveRecord::Base
   end
 
   def self.update_db_orders
-    orders = Order.where(:orderState => '0')
+    orders = Order.open
     api = OrderApi.new
     orders.each do |db_order|
       if api_order = api.order_by_id(db_order.orderID)
