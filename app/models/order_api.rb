@@ -52,18 +52,14 @@ class OrderApi < EveApi
   end
 
   def update_api_orders
-    api = OrderApi.new
-    orders = api.orders
     orders.each do |order|
       update_changes(order)
     end
   end
 
   def update_db_orders
-    orders = Order.open
-    api = OrderApi.new
-    orders.each do |db_order|
-      if api_order = api.order_by_id(db_order.orderID)
+    Order.open.each do |db_order|
+      if api_order = order_by_id(db_order.orderID)
         update_changes(api_order, db_order)
       end
     end
