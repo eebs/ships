@@ -2,7 +2,7 @@ class Order < ActiveRecord::Base
   attr_accessible :bid, :charID, :duration, :minVolume, :orderID, :orderState, :price, :range, :stationID, :typeID, :volEntered, :volRemaining
 
   def item_title
-    api = EveApi.new
+    api = OrderApi.new
     api.type_name(typeID)
   end
 
@@ -12,7 +12,7 @@ class Order < ActiveRecord::Base
   end
 
   def self.update_api_orders
-    api = EveApi.new
+    api = OrderApi.new
     orders = api.orders
     orders.each do |order|
       self.update_changes(order)
@@ -21,7 +21,7 @@ class Order < ActiveRecord::Base
 
   def self.update_db_orders
     orders = Order.where(:orderState => '0')
-    api = EveApi.new
+    api = OrderApi.new
     orders.each do |db_order|
       if api_order = api.order_by_id(db_order.orderID)
         self.update_changes(api_order, db_order)

@@ -3,7 +3,7 @@ class ApiController < ApplicationController
   before_filter :authenticate_admin!
 
   def orders
-    @api = EveApi.new
+    @api = OrderApi.new
     @open_orders_hash = {}
     if open_orders = @api.open_orders
       open_orders.each do |order|
@@ -17,6 +17,6 @@ class ApiController < ApplicationController
       end
     end
 
-    @next_update = @api.next_order_update
+    @next_update = @api.next_update
   end
 end
