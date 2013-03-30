@@ -118,8 +118,8 @@ private
 
   def send_to_admins(message)
     characters = Character.where(:admin => true)
-    characters.each do |characters|
-      characters.notify(message)
+    characters.each do |character|
+      character.notify(message)
     end
   end
 end
