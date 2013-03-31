@@ -92,11 +92,8 @@ private
   end
 
   def send_new_notification(order)
-    message = Message.new
-    message.title = "New order found for #{order.item_title}"
-    message.body = "Listed at #{order.price}."
-    message.save
-
+    message = NewOrderMessage.create!(:title => "New order found for #{order.item_title}")
+    message.order_id = order.id
     send_to_admins(message)
   end
 
