@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130318033108) do
+ActiveRecord::Schema.define(:version => 20130331205522) do
 
   create_table "characters", :force => true do |t|
     t.string   "encrypted_password",  :default => "",    :null => false
@@ -73,9 +73,9 @@ ActiveRecord::Schema.define(:version => 20130318033108) do
   create_table "messages", :force => true do |t|
     t.string   "title"
     t.text     "body"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-    t.string   "message_type"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "type"
   end
 
   create_table "notifications", :force => true do |t|
