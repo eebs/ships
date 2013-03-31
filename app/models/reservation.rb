@@ -9,9 +9,10 @@ class Reservation < ActiveRecord::Base
   after_create :notify_admins
 
   def notify_admins
-    message = Message.new
-    message.title = "New Reservation"
-    message.body = "#{character.name} has reserved #{run.display_name}"
-    Notification.send_to_admins(message) if message.save
+    message = NewReservationMessage.new
+    message.title = "#{character.name} has reserved #{run.display_name}"
+    message.save
+    message.reservation_id = id
+    Notification.send_to_admins(message)
   end
 end

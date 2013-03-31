@@ -14,7 +14,7 @@
                 <% if note.read_at.nil? %><%= link_to 'Dismiss', notifications_dismiss_path( :id => note.id ), class: 'pull-right btn btn-mini' %><% end %>
               </div>
             </div>
-            <% present note.message do |message_presenter| %>
+            <% present note.message, MessagePresenter do |message_presenter| %>
               <%= message_presenter.render_message %>
             <% end %>
           </div>

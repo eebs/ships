@@ -5,7 +5,7 @@ class Notification < ActiveRecord::Base
   belongs_to :message
 
   def self.send_to_admins(message)
-    if message.instance_of? Message
+    if message.kind_of? Message
       users = Character.where(:admin => true)
       users.each do |user|
         user.notify(message)

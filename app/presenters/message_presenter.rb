@@ -2,7 +2,7 @@ class MessagePresenter < BasePresenter
   presents :message
 
   def render_message
-    div_for message do
+    div_for message, :class => 'message_body' do
       render_partial
     end
   end
@@ -23,6 +23,6 @@ class MessagePresenter < BasePresenter
   end
 
   def message_paths
-    message.message_type.nil? ? [] : ["messages/#{message.message_type.underscore}"]
+    message.type.nil? ? [] : ["messages/#{message.type.underscore}"]
   end
 end
