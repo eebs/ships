@@ -77,3 +77,5 @@ gem 'cancan'
 gem 'simple_form'
 
 gem 'redis-objects'
+
+gem "bootstrap-will_paginate", "~> 0.0.9"

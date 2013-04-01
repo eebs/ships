@@ -1,6 +1,11 @@
 <h3 class="notifications-title-inline">Notifications</h3><%= link_to 'Dismiss All', notifications_dismiss_all_path, class: 'dismiss-all-button btn btn-mini' %><hr/>
 
 <% unless @notifications.empty? %>
+  <div class="row">
+    <div class="span8 offset2">
+      <%= will_paginate @notifications %>
+    </div>
+  </div>
   <ol id="notifications" class="unstyled">
   <% @notifications.each do |note| %>
     <li class="notification">
@@ -23,6 +28,11 @@
     </li>
   <% end %>
   </ol>
+  <div class="row">
+    <div class="span8 offset2">
+      <%= will_paginate @notifications %>
+    </div>
+  </div>
 <% else %>
     <span>No notifications yet.</span>
 <% end %>

@@ -235,6 +235,18 @@ input {
   background-color: #EEF9FF;
 }*/
 
+/* pagination */
+
+.pagination {
+  margin: 20px 0px;
+  text-align: center;
+}
+
+.pagination ul > li > a {
+  line-height: 16px;
+  padding: 4px 7px;
+}
+
 /* sign in/up */
 
 .registered_name {
