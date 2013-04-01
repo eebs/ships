@@ -1,11 +1,6 @@
 class NewReservationMessage < Message
-  include Redis::Objects
-
   value :reservation_id
-
-  def reservation
-    @reservation ||= Reservation.find_by_id(reservation_id.value)
-  end
+  has_redis_object_relations
 
   def character
     reservation.character
