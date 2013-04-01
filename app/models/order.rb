@@ -14,6 +14,10 @@ class Order < ActiveRecord::Base
   end
 
   def status
+    self.class.status(orderState) || orderState
+  end
+
+  def self.status(state)
     states = {
       "0" => 'Open',
       "1" => 'Closed',
@@ -22,6 +26,14 @@ class Order < ActiveRecord::Base
       "4" => 'Pending',
       "5" => 'Character Deleted',
     }
-    states[orderState] || orderState
+    states[state] || state
+  end
+
+  def self.field_name(field)
+    names = {
+      'orderState' => 'Status',
+      'volRemaining' => 'Volume Remaining',
+    }
+    names[field] || field.capitalize
   end
 end

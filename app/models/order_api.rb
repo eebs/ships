@@ -98,15 +98,9 @@ private
   end
 
   def send_change_notification(order)
-    message = Message.new
-    message.title = "Order for #{order.item_title} has changed"
-    body = "Summary:\n"
-    order.changes.each do |field, change|
-      line = "#{field} changed from #{change[0]} to #{change[1]}\n"
-      body += "#{line}"
-    end
-    message.body = body
-    message.save
+    message = ChangedOrderMessage.create!(:title => "Order for #{order.item_title} has changed")
+    message.order_id = order.id
+    message.changes = order.changes
 
     send_to_admins(message)
   end
