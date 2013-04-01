@@ -2,7 +2,7 @@ class NotificationsController < ApplicationController
   before_filter :authenticate_character!
 
   def index
-    @notifications = current_character.notifications.includes(:message).page(params[:page]).per_page(5).order('created_at DESC, id')
+    @notifications = current_character.notifications.includes(:message).page(params[:page]).per_page(10).order('created_at DESC, id')
   end
 
   def dismiss
