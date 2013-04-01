@@ -9,7 +9,6 @@ module RedisObjectRelations
       redis_objects.each do |object, options|
         if m = /^(?<name>.*)_id$/.match(object)
           name = m[:name]
-          puts name
           class_eval <<-EndMethods
             def #{name}
               @#{name} ||= #{name.capitalize}.find(#{name}_id.value)
