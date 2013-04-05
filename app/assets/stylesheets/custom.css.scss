@@ -226,14 +226,85 @@ input {
   font-size: 12px;
   margin: 3px;
 }
-/*.note-text {
-  padding: 5px 10px;
-  border-radius: 6px;
+
+/* reservation comments */
+
+.reservation-comment {
+  margin-bottom: 20px;
 }
 
-.note-text-unread {
-  background-color: #EEF9FF;
-}*/
+.reservation-comment .media .pull-left {
+  margin-right: 6px;
+}
+
+.res-comment-container-outer {
+  margin-left: 10px;
+  position: relative;
+  background: #EEEEEE;
+  border-radius: 3px;
+  padding: 3px;
+}
+
+.res-comment-container {
+  background-color: #FFFFFF;
+  border: 1px solid #CACACA;
+  min-height: 60px;
+}
+
+.res-comment-container-outer::before {
+  border-bottom: 10px solid rgba(238, 238, 238, 0);
+  border-left: 0px solid rgba(238, 238, 238, 0);
+  border-right: 10px solid #EEEEEE;
+  border-top: 10px solid rgba(238, 238, 238, 0);
+  content: "";
+  display: block;
+  height: 0px;
+  left: -10px;
+  position: absolute;
+  top: 15px;
+  width: 0px;
+}
+
+.res-comment-header {
+  background-color: #E1E1E1;
+  background-image: linear-gradient(to bottom, #F8F8F8, #E1E1E1);
+  background-repeat: repeat-x;
+  border-bottom: 1px solid #CCCCCC;
+  font-size: 12px;
+  height: 33px;
+  padding: 0px 10px 0px 6px;
+}
+
+.res-comment-header-author {
+  color: #222222;
+  font-weight: 700;
+  line-height: 33px;
+  max-width: 600px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.702);
+  white-space: nowrap;
+}
+
+.res-comment-content {
+  box-sizing: border-box;
+  font-size: 13px;
+  overflow: auto;
+  padding: 10px;
+  width: 100%;
+}
+
+.res-comment-header-right {
+  float: right;
+}
+
+.res-comment-header-datetime {
+  color: #777777;
+  font-size: 11px;
+  font-style: normal;
+  line-height: 33px;
+  text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.702);
+}
 
 /* pagination */
 
