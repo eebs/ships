@@ -306,6 +306,26 @@ input {
   text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.702);
 }
 
+#new_reservation_comment .controls {
+  padding: 3px;
+}
+
+#reservation_comment_body {
+  margin-bottom: 0px;
+}
+
+.new-res-comment-form form {
+  margin-bottom: 0px;
+}
+
+.new-res-comment-form .control-group {
+  margin-bottom: 0px;
+}
+
+#new-res-comment-button {
+  margin-top: 5px;
+}
+
 /* pagination */
 
 .pagination {
