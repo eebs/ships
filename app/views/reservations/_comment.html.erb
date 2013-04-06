@@ -10,7 +10,7 @@
             <%= link_to comment.character.name, comment.character, :class => 'res-comment-header-author' %>
             <span>commented</span>
             <span class="res-comment-header-right">
-              <span class="res-comment-header-datetime"><%= time_ago_in_words(comment.created_at) %> ago</span>
+              <span class="res-comment-header-datetime" title="<%= comment.created_at %>"><%= time_ago_in_words(comment.created_at) %> ago</span>
             </span>
           </div>
           <div class="res-comment-content"><%= simple_format comment.body %></div>
