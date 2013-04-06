@@ -6,4 +6,5 @@ class ReservationComment < ActiveRecord::Base
 
   validates_presence_of :character
   validates_presence_of :reservation
+  validates_presence_of :body
 end

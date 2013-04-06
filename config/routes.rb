@@ -40,6 +40,8 @@ Ships::Application.routes.draw do
     resources :jobs
   end
 
+  post "reservation/:id/comment" => "reservation_comments#create", :as => :reservation_comments
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

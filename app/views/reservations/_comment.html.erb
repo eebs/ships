@@ -1,4 +1,4 @@
-<div class="reservation-comment">
+<div id="reservation-comment-<%= comment.id %>" class="reservation-comment">
   <div class="media">
     <span class="pull-left">
       <%= character_image_tag current_character.characterid, 64, {:height => 48, :width => 48} %>
@@ -7,7 +7,7 @@
       <div class="res-comment-container-outer">
         <div class="res-comment-container">
           <div class="res-comment-header">
-            <a href="/admin/characters/1" class="res-comment-header-author"><%= comment.character.name %></a>
+            <%= link_to comment.character.name, comment.character, :class => 'res-comment-header-author' %>
             <span>commented</span>
             <span class="res-comment-header-right">
               <span class="res-comment-header-datetime"><%= time_ago_in_words(comment.created_at) %> ago</span>
