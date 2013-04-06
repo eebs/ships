@@ -1,7 +1,7 @@
 <div id="reservation-comment-<%= comment.id %>" class="reservation-comment">
   <div class="media">
     <span class="pull-left">
-      <%= character_image_tag current_character.characterid, 64, {:height => 48, :width => 48} %>
+      <%= character_image_tag comment.character.characterid, 64, {:height => 48, :width => 48} %>
     </span>
     <div class="media-body">
       <div class="res-comment-container-outer">
