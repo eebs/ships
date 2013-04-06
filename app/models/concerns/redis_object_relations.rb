@@ -11,7 +11,7 @@ module RedisObjectRelations
           name = m[:name]
           class_eval <<-EndMethods
             def #{name}
-              @#{name} ||= #{name.capitalize}.find(#{name}_id.value)
+              @#{name} ||= #{name.camelize}.find(#{name}_id.value)
             end
           EndMethods
         end
