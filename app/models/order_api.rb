@@ -28,6 +28,7 @@ class OrderApi < EveApi
   def open_orders
     # Reject all orders that are not open
     orders.reject! { |e| e.orderState != '0' }
+    orders
   end
 
   def order_by_id(orderID)
