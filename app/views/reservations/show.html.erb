@@ -78,20 +78,17 @@
           <%= character_image_tag current_character.characterid, 64, {:height => 48, :width => 48} %>
         </span>
         <div class="media-body">
-          <div class="res-comment-container-outer">
-            <div class="res-comment-container">
-              <div class="new-res-comment-form">
-                <%= simple_form_for(ReservationComment.new, :html => {:class => 'form-vertical' }) do |f| %>
-                <%= f.error_notification %>
-                <%= f.error :base, :class => 'error-base' %>
-
-                <%= f.input :body, :input_html => { :rows => 3 }, :label => false, :class => 'res-comment-input-body', :placeholder => 'Add a comment' %>
+          <%= simple_form_for @reservation_comment do |f| %>
+            <div class="res-comment-container-outer">
+              <div class="res-comment-container">
+                <div class="new-res-comment-form">
+                  <%= f.input :body, :input_html => { :rows => 3 }, :label => false, :class => 'res-comment-input-body', :placeholder => 'Add a comment' %>
                 </div>
-                </div>
-                </div>
-                <%= f.button :submit, 'Comment', :class => 'btn btn-primary pull-right', :id => 'new-res-comment-button' %>
-              <% end %>
-      </div>
+              </div>
+            </div>
+            <%= f.button :submit, 'Comment', :class => 'btn btn-primary pull-right', :id => 'new-res-comment-button' %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
