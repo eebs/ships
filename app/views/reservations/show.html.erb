@@ -64,61 +64,7 @@
     </div>
   </div>
 </div>
-<div class="row">
-  <div class="span8 offset2">
-    <hr/>
-  </div>
-</div>
-<div class="row">
-  <div class="span8 offset2">
-    <div class="reservation-comment">
-      <div class="media">
-        <span class="pull-left">
-          <%= character_image_tag current_character.characterid, 64, {:height => 48, :width => 48} %>
-        </span>
-        <div class="media-body">
-          <div class="res-comment-container-outer">
-            <div class="res-comment-container">
-              <div class="res-comment-header">
-                <a href="/admin/characters/1" class="res-comment-header-author">Eebs</a>
-                <span>commented</span>
-                <span class="res-comment-header-right">
-                  <span class="res-comment-header-datetime">3 days ago</span>
-                </span>
-              </div>
-              <div class="res-comment-content">could you please explain how eaal would benefit from that change,
-   passing the values from the config to the constructor of the eaal object would have the same effect.
-
-  also passing nil as vcode / keyid should not cause an error, since there are API pages that do not require a key at all (ServerStatus for example). (if however thats not working with the current version either, then thats a bug that needs to be fixed)</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="reservation-comment">
-      <div class="media">
-        <span class="pull-left">
-          <%= character_image_tag current_character.characterid, 64, {:height => 48, :width => 48} %>
-        </span>
-        <div class="media-body">
-          <div class="res-comment-container-outer">
-            <div class="res-comment-container">
-              <div class="res-comment-header">
-                <a href="/admin/characters/1" class="res-comment-header-author">Eebs</a>
-                <span>commented</span>
-                <span class="res-comment-header-right">
-                  <span class="res-comment-header-datetime">2 days ago</span>
-                </span>
-              </div>
-              <div class="res-comment-content">could you please explain how eaal would benefit from that change,
-   passing the values from the config to the constructor of the eaal object would have the same effect.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<%= render :partial => 'reservations/comments', :locals => { :reservation => @reservation } %>
 <div class="row">
   <div class="span8 offset2">
     <hr/>

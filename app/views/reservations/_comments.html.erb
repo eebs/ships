@@ -1,0 +1,15 @@
+<% if reservation.comments.present? %>
+  <div class="row">
+    <div class="span8 offset2">
+      <hr/>
+    </div>
+  </div>
+  <div class="row">
+    <div class="span8 offset2">
+      <%= render :partial => "reservations/comment", :collection => reservation.comments %>
+    </div>
+  </div>
+<% end %>
+
+
+    

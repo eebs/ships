@@ -3,4 +3,7 @@ class ReservationComment < ActiveRecord::Base
 
   belongs_to :character
   belongs_to :reservation
+
+  validates_presence_of :character
+  validates_presence_of :reservation
 end

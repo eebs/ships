@@ -20,6 +20,7 @@ class Character < ActiveRecord::Base
   has_many :messages, :through => :notifications
 
   has_many :reservations
+  has_many :reservation_comments
 
   def notify(message)
     messages << message
