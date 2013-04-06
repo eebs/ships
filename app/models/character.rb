@@ -22,6 +22,12 @@ class Character < ActiveRecord::Base
   has_many :reservations
   has_many :reservation_comments
 
+  scope :admins, where(:admin => true)
+
+  def self.admins_except_current(current_character)
+    Character.find(:all, :conditions => ["admin = ? and id != ?", true, current_character.id])
+  end
+
   def notify(message)
     messages << message
   end
