@@ -210,7 +210,7 @@ input {
   padding: 10px;
 }
 
-.message_body p {
+.message_body p:last-child {
   margin: 0px;
   padding: 0px;
 }
@@ -225,6 +225,15 @@ input {
   float: right;
   font-size: 12px;
   margin: 3px;
+}
+
+.new_reservation_comment_message.message_body .reservation_comment {
+  margin-top: 5px;
+  border: 1px solid #DDDDDD;
+  background-color: #E6E6E6;
+  padding: 6px;
+  font-style: italic;
+  border-radius: 3px;
 }
 
 /* reservation comments */

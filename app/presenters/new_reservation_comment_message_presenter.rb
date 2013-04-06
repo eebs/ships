@@ -10,10 +10,16 @@ class NewReservationCommentMessagePresenter < BasePresenter
   end
 
   def comment
-    
+    div_for message.reservation_comment do
+      simple_format(truncate message.reservation_comment.body, :length => 300, :separator => ' ', :omission => comment_omission)
+    end
   end
 
 private
+
+  def comment_omission
+    '... ' + reservation_link('Read more')
+  end
 
   def character_name
     if current_character.admin?
@@ -23,8 +29,9 @@ private
     end
   end
 
-  def reservation_link
-    link_to(reservation_name, reservation_path_with_anchor)
+  def reservation_link(text = nil)
+    text ||= reservation_name
+    link_to(text, reservation_path_with_anchor)
   end
 
   def reservation_path_with_anchor
