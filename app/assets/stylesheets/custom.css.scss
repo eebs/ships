@@ -306,6 +306,10 @@ input {
   text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.702);
 }
 
+.res-comment-content p:last-child {
+  margin: 0px
+}
+
 #new_reservation_comment .controls {
   padding: 3px;
 }
