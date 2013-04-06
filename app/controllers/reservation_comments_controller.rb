@@ -19,8 +19,12 @@ private
 
   def authenticate_commenter
     reservation = Reservation.find(params[:id])
-    unless reservation.character == current_character || current_character.admin?
+    unless reservation.character == current_character || current_character_is_admin?
       redirect_to :root, alert: 'You are not authorized to access that page.'
     end
+  end
+
+  def current_character_is_admin?
+    current_character && current_character.admin?
   end
 end
