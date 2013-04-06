@@ -9,6 +9,8 @@ class ReservationCommentsController < ApplicationController
     @reservation_comment.character = current_character
 
     if @reservation_comment.save
+      notifier = ReservationCommentNotifier.new(@reservation_comment, current_character)
+      notifier.send_notifications
       redirect_to({:controller => 'reservations', :action => 'show', :id => reservation.id, :anchor => "reservation-comment-#{@reservation_comment.id}"}, notice: 'Comment added')
     else
       redirect_to reservation, :alert => 'Invalid comment'
