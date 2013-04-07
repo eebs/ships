@@ -14,7 +14,7 @@
         <h4 class="media-heading"><%= run.ship.name %></h4> <h4 class="media-heading ship-light-text">#<%= run.ship_number %></h4>
         <div class="ship-light-text">Type: <%= run.ship.ship_type %></div>
         <% if run.start_date.present? %>
-          <div class="ship-light-text">Started: <%= Time.zone.parse(run.start_date).to_s(:month_date) %></div>
+          <div class="ship-light-text">Started: <%= run.start_date.to_s(:month_date) %></div>
         <% end %>
       </div>
     </div>
@@ -27,12 +27,11 @@
         <h4 class="media-heading"><%= run.status.name %></h4>
         <div class="ship-light-text">
           <%=
-          unless run.next_due.empty?
-            due = Time.zone.parse(run.next_due)
-            if due.future?
-                "Current task finishes " + distance_of_time_in_words_to_now(due) + " from now"
+          unless run.next_due.nil?
+            if run.next_due.future?
+                "Current task finishes " + distance_of_time_in_words_to_now(run.next_due) + " from now"
             else
-                "Current task finished " + time_ago_in_words(due) + " ago"
+                "Current task finished " + time_ago_in_words(run.next_due) + " ago"
             end
           end
           %>

@@ -9,6 +9,7 @@ class ReservationsController < ApplicationController
   end
 
   def show
+    @reservation_comment = ReservationComment.new
     @reservation = Reservation.find(params[:id])
     unless (@reservation.character == current_character) || current_character.admin?
       flash[:error] = "You are not authorized to view that reservation."

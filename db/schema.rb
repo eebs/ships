@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130331205522) do
+ActiveRecord::Schema.define(:version => 20130405205758) do
 
   create_table "characters", :force => true do |t|
     t.string   "encrypted_password",  :default => "",    :null => false
@@ -101,6 +101,14 @@ ActiveRecord::Schema.define(:version => 20130331205522) do
     t.string   "bid"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+  end
+
+  create_table "reservation_comments", :force => true do |t|
+    t.integer  "character_id"
+    t.integer  "reservation_id"
+    t.text     "body"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   create_table "reservations", :force => true do |t|

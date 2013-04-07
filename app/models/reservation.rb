@@ -4,6 +4,8 @@ class Reservation < ActiveRecord::Base
   belongs_to :character
   belongs_to :run
 
+  has_many :comments, :class_name => "ReservationComment"
+
   validates_uniqueness_of :run_id
 
   after_create :notify_admins

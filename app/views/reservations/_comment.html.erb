@@ -1,0 +1,21 @@
+<div id="reservation-comment-<%= comment.id %>" class="reservation-comment">
+  <div class="media">
+    <span class="pull-left">
+      <%= character_image_tag comment.character.characterid, 64, {:height => 48, :width => 48} %>
+    </span>
+    <div class="media-body">
+      <div class="res-comment-container-outer">
+        <div class="res-comment-container">
+          <div class="res-comment-header">
+            <%= link_to comment.character.name, comment.character, :class => 'res-comment-header-author' %>
+            <span>commented</span>
+            <span class="res-comment-header-right">
+              <span class="res-comment-header-datetime" title="<%= comment.created_at %>"><%= time_ago_in_words(comment.created_at) %> ago</span>
+            </span>
+          </div>
+          <div class="res-comment-content"><%= simple_format comment.body %></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
