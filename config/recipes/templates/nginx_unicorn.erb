@@ -4,7 +4,13 @@ upstream unicorn_<%= application %> {
 
 server {
   listen 80;
-  server_name kpsec.net *.kpsec.net;
+  server_name kpsec.net;
+  return 301 $scheme://www.kpsec.net$request_uri;
+}
+
+server {
+  listen 80;
+  server_name www.kpsec.net;
   root <%= current_path %>/public;
 
   location ^~ /assets/ {
