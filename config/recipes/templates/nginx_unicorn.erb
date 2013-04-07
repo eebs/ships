@@ -4,7 +4,7 @@ upstream unicorn_<%= application %> {
 
 server {
   listen 80;
-  server_name <%= application %>.eebsy.com;
+  server_name *.kpsec.net;
   root <%= current_path %>/public;
 
   location ^~ /assets/ {
