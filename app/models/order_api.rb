@@ -21,14 +21,12 @@ class OrderApi < EveApi
     api.scope = 'corp'
     orders = api.MarketOrders.orders
     # Only fetch sell orders
-    orders.reject! { |e| e.bid != '0' }
-    orders
+    orders.reject { |e| e.bid != '0' }
   end
 
   def open_orders
     # Reject all orders that are not open
-    orders.reject! { |e| e.orderState != '0' }
-    orders
+    orders.reject { |e| e.orderState != '0' }
   end
 
   def order_by_id(orderID)
