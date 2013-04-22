@@ -24,6 +24,12 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.new( :character_id => current_character.id, :run_id => @run.id )
 
     if @reservation.save
+      notify :admins do |notifier|
+        message = NewReservationMessage.create! :title => "#{@reservation.character.name} has reserved #{@reservation.run.display_name}"
+        message.reservation_id = @reservation.id
+        notifier.message = message
+      end.send
+
       redirect_to reservation_path(@reservation), notice: 'Reservation was successfully created.'
     else
       redirect_to :back

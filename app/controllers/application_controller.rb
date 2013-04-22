@@ -20,6 +20,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def notify(options = {})
+    notifier = Notifier.new options
+    yield notifier if block_given?
+    notifier
+  end
+
   rescue_from CanCan::AccessDenied do |exception|
         flash[:error] = exception.message
         redirect_to root_url

@@ -11,7 +11,15 @@ class Characters::RegistrationsController < Devise::RegistrationsController
     # Use name and id from IGB
     params[:character][:name] = igb.char_name
     params[:character][:characterid] = igb.char_id
+
     super
+
+    notify :admins do |notifier|
+      character = Character.find_by_characterid params[:character][:characterid]
+      message = NewCharacterMessage.create!(:title => "New character registration")
+      message.character_id = character.id
+      notifier.message = message
+    end.send
   end
 
   def update
