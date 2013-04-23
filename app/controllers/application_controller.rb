@@ -20,8 +20,8 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def notify(options = {})
-    notifier = Notifier.new options
+  def notify(who, options = {})
+    notifier = Notifier.new who, options
     yield notifier if block_given?
     notifier
   end
