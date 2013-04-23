@@ -91,23 +91,23 @@ private
   end
 
   def send_new_notification(order)
+    notifier = Notifier.new :admins
+
     message = NewOrderMessage.create!(:title => "New order found for #{order.item_title}")
     message.order_id = order.id
-    send_to_admins(message)
+
+    notifier.message = message
+    notifier.send
   end
 
   def send_change_notification(order)
+    notifier = Notifier.new :admins
+
     message = ChangedOrderMessage.create!(:title => "Order for #{order.item_title} has changed")
     message.order_id = order.id
     message.changes = order.changes
 
-    send_to_admins(message)
-  end
-
-  def send_to_admins(message)
-    characters = Character.where(:admin => true)
-    characters.each do |character|
-      character.notify(message)
-    end
+    notifier.message = message
+    notifier.send
   end
 end
