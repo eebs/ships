@@ -6,6 +6,6 @@ jQuery ->
     element: 'sold_chart'
     data: $('#sold_chart').data('sold')
     xkey: 'sell_date'
-    ykeys: ['archon', 'thanatos']
-    labels: ['Archon Price', 'Thanatos Price']
+    ykeys: ['archon', 'thanatos', 'chimera']
+    labels: ['Archon Price', 'Thanatos Price', 'Chimera Price']
     ymin: '1283000000'
