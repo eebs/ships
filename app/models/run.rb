@@ -33,6 +33,10 @@ class Run < ActiveRecord::Base
     !!reservation
   end
 
+  def is_available?
+    status == Status.on_market || status == Status.in_hanger
+  end
+
   def self.sold_ordered
     if sold_status = Status.find_by_name('Sold')
       where('status_id = ?', sold_status.id).order('sell_date DESC')

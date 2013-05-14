@@ -123,11 +123,11 @@ private
     image_tag src, options
   end
 
-  def status_switcher(has_reservation, on_market, not_on_market)
+  def status_switcher(has_reservation, available, not_available)
     if run.reservation
       has_reservation
     else
-       (run.status == Status.on_market) ?  on_market : not_on_market
+       run.is_available? ?  available : not_available
     end
   end
 
