@@ -8,4 +8,4 @@ jQuery ->
     xkey: 'sell_date'
     ykeys: ['archon', 'thanatos', 'chimera']
     labels: ['Archon Price', 'Thanatos Price', 'Chimera Price']
-    ymin: '1283000000'
+    ymin: '1200000000'
