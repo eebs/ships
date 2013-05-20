@@ -9,8 +9,14 @@ class ReservationCommentsController < ApplicationController
     @reservation_comment.character = current_character
 
     if @reservation_comment.save
-      notifier = ReservationCommentNotifier.new(@reservation_comment, current_character)
-      notifier.send_notifications
+      notify :admins, :include => reservation.character, :exclude => current_character do |notifier|
+        message = NewReservationCommentMessage.create!(:title => "#{current_character.name} commented on reservation for #{reservation.run.display_name}")
+        message.reservation_id = reservation.id
+        message.reservation_comment_id = @reservation_comment.id
+
+        notifier.message = message
+      end.send
+
       redirect_to({:controller => 'reservations', :action => 'show', :id => reservation.id, :anchor => "reservation-comment-#{@reservation_comment.id}"}, notice: 'Comment added')
     else
       redirect_to reservation, :alert => 'Invalid comment'

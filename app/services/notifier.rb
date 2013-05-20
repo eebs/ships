@@ -27,7 +27,8 @@ class Notifier
       raise "Invalid option specified for who"
     end
 
-    except(characters, options[:except])
+    characters = include_characters(characters, options[:include])
+    characters = except(characters, options[:except])
   end
 
   def send
@@ -42,16 +43,26 @@ class Notifier
 
 private
 
+  def include_characters(characters, inclusions)
+    inclusions = validate_option(inclusions)
+    characters + inclusions
+  end
+
   def except(characters, exclusions)
-    if exclusions.nil?
-      return characters 
-    end
-
-    exclusions = [exclusions] unless exclusions.is_a? Array
-
-    if exclusions.any? { |e| !e.is_a?(Character) }
-      raise ":except must be a Character or an array of Characters"
-    end
+    exclusions = validate_option(exclusions)
     characters.reject { |e| exclusions.include? e }
+  end
+
+  def validate_option(option)
+    if option.nil?
+      return []
+    end
+
+    option = [option] unless option.is_a? Array
+
+    if option.any? { |e| !e.is_a?(Character) }
+      raise ":include and/or :except must be a Character or an array of Characters"
+    end
+    return option
   end
 end

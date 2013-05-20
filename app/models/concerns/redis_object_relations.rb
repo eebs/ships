@@ -18,5 +18,4 @@ module RedisObjectRelations
       end
     end
   end
-  
 end
